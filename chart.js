@@ -83,7 +83,7 @@ axis.renderer.ticks.template.strokeWidth = 0.5;
 axis.renderer.ticks.template.length = 5;
 axis.renderer.grid.template.disabled = true;
 axis.renderer.labels.template.radius = am4core.percent(15);
-axis.renderer.labels.template.fontSize = "0.9em";
+axis.renderer.labels.template.fontSize = "1.4em";
 
 /**
  * Axis for ranges
