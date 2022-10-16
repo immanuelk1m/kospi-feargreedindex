@@ -100,7 +100,7 @@ axis2.renderer.grid.template.opacity = 0.5;
 axis2.renderer.labels.template.bent = true;
 axis2.renderer.labels.template.fill = am4core.color("#000");
 axis2.renderer.labels.template.fontWeight = "bold";
-axis2.renderer.labels.template.fillOpacity = 0.3;
+axis2.renderer.labels.template.fillOpacity = 0.5;
 
 
 
