@@ -3,7 +3,8 @@ am4core.ready(function() {
 // Themes begin
 am4core.useTheme(am4themes_animated);
 // Themes end
-
+am4core.addLicense("ch-custom-attribution");
+    
 var chartMin = 0;
 var chartMax = 100;
     
