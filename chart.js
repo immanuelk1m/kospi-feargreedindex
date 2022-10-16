@@ -12,31 +12,31 @@ var data = {
   score: 50,
   gradingData: [
     {
-      title: "Extreme Fear",
+      title: "😱",
       color: "#ee1f25",
       lowScore: 0,
       highScore: 20
     },
     {
-      title: "Fear",
+      title: "😨",
       color: "#fdae19",
       lowScore: 20,
       highScore: 40
     },
     {
-      title: "Normal",
+      title: "😐",
       color: "#f3eb0c",
       lowScore: 40,
       highScore: 60
     },
     {
-      title: "Greed",
+      title: "😀",
       color: "#b0d136",
       lowScore: 60,
       highScore: 80
     },
     {
-      title: "Extreme Greed",
+      title: "🤑",
       color: "#0f9747",
       lowScore: 80,
       highScore: 100
