@@ -1,367 +1,347 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Kospi Fear Greed</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
-    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+	<title>Kospi Fear Greed</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    
+	<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
 	<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
-    
-   
-    <script src="./assets/js/jquery.min.js"></script>
-    
-
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="./assets/css/main.css" />
+	<script src="./assets/js/jquery.min.js"></script>
+	<link rel="stylesheet" href="./assets/css/main.css" />
 </head>
 
     <!-- ############ bdoy part #####################-->
-<body class="is-preload">
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7656508177587264"
-     crossorigin="anonymous"></script>
-	
-    <section id="header">
-    <header>
-      <span class="image avatar"><img src="./images/avatar.jpg" alt="" /></span>
-      <h1 id="logo"><a href="#">코스피 공포 & 탐욕 지수</a></h1>
-      <p>투자 심리를 반영하는 6가지 지표로 시장의 공포와 탐욕을 나타낸 지수</p>
-    </header>
-    <nav id="nav">
-      <ul>
-        <li><a href="#index">Index</a></li>
-        <li><a href="#momentum" class="active">Momentum</a></li>
-        <li><a href="#breadth">Stock Price Breadth</a></li>
-        <li><a href="#vix">VIX </a></li>
-        <li><a href="#pcratio">Put / Call Raio</a></li>
-        <li><a href="#safehaven">Safe Haven Demand</a></li>
-        <li><a href="#junkbond">Junk Bond Demand</a></li>
-      </ul>
-    </nav>
+	<body class="is-preload">
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7656508177587264"
+			crossorigin="anonymous"></script>
 
-    </section>
-    
-    <section id="index_part">
-        <h1>
-            <b1>코스피 공포 & 탐욕 지수</b1>
-        </h1>
-    </section>
-	 <h1>
-            <br>
-		 <br>
-		 <br>
-		 <br>
-		 <br>
-        </h1>
-	
-	<style>
-		#index {
-		float:left;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		padding: 6px 14px;
-		font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
-		border-radius: 6px;
-		border: none;
+		<header id="header">
+			<div class="inner">
+				<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
+				<h1>투자 심리를 반영하는 6가지 지표로 시장의 공포와 탐욕을 나타낸 지수</h1>
+			</div>
+		</header>
+		
+		<div id="main">
+			<section id="index_part">
+				<h1>
+					<b1>코스피 공포 & 탐욕 지수</b1>
+				</h1>
+			</section>
+			<h1>
+				<br>
+				<br>
+				<br>
+				
+			</h1>
+			
+			<style>
+				#index {
+					float:left;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					padding: 6px 14px;
+					font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+					border-radius: 6px;
+					border: none;
 
-		background: #6E6D70;
-		box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);
-		color: #DFDEDF;
-		uer-select: none;
-		-webkit-user-select: none;
-		touch-action: manipulation;
-		}
+					background: #6E6D70;
+					box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);
+					color: #DFDEDF;
+					uer-select: none;
+					-webkit-user-select: none;
+					touch-action: manipulation;
+					}
 
-		#index:focus {
-		box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
-		outline: 0;
-		}
-	</style>
-	<style>
-		#chart {
+				#index:focus {
+					box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+					outline: 0;
+				}
+			</style>
+			<style>
+			#chart {
 
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		padding: 6px 14px;
-		font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
-		border-radius: 6px;
-		border: none;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 6px 14px;
+			font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+			border-radius: 6px;
+			border: none;
 
-		background: #6E6D70;
-		box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);
-		color: #DFDEDF;
-		uer-select: none;
-		-webkit-user-select: none;
-		touch-action: manipulation;
-		}
+			background: #6E6D70;
+			box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);
+			color: #DFDEDF;
+			uer-select: none;
+			-webkit-user-select: none;
+			touch-action: manipulation;
+			}
 
-		#chart:focus {
-		box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
-		outline: 0;
-		}
-	</style>
-	
-        <button id="index">Index</button>
-        <button id="chart">Chart</button>
-        
-        <script>
-            $(document).ready(function() {
-            $('.chartdiv').show(); //페이지를 로드할 때 표시할 요소
-            $('#linechart').hide(); //페이지를 로드할 때 숨길 요소
+			#chart:focus {
+			box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+			outline: 0;
+			}
+			</style>
 
-            document.getElementById("index").onclick =function(){
-            $ ('#linechart').hide(); //클릭 시 첫 번째 요소 숨김
-            $ ('.chartdiv').show(); //클릭 시 두 번째 요소 표시
-            return false;
-            };
+			<button id="index">Index</button>
+			<button id="chart">Chart</button>
 
-            document.getElementById("chart").onclick =function(){
-            $ ('.chartdiv').hide(); //클릭 시 첫 번째 요소 숨김
-            $ ('#linechart').show(); //클릭 시 두 번째 요소 표시
-            return false;
-            };
-                });
-        </script>
+			<script>
+				$(document).ready(function() {
+					$('.chartdiv').show(); //페이지를 로드할 때 표시할 요소
+					$('#linechart').hide(); //페이지를 로드할 때 숨길 요소
 
-        
+					document.getElementById("index").onclick =function(){
+						$ ('#linechart').hide(); //클릭 시 첫 번째 요소 숨김
+						$ ('.chartdiv').show(); //클릭 시 두 번째 요소 표시
+						return false;
+					};
 
-    <!-- ############ gauge chart #####################-->
-        <style>
-        .chartdiv {
-            width: 800px;
-            height: 400px;
-        }
-        </style>
-        <script src="chart.js"></script>
-        
-        <div class=chartdiv></div>
+					document.getElementById("chart").onclick =function(){
+						$ ('.chartdiv').hide(); //클릭 시 첫 번째 요소 숨김
+						$ ('#linechart').show(); //클릭 시 두 번째 요소 표시
+						return false;
+					};
+				});
+			</script>
 
-    <!-- ############ kospi vs index line chart #####################-->
-        
-    <div id=linechart>
-        <canvas id="index_line" style="height:30vh; width:60vw"></canvas>
-        <script src="./assets/js/index_kospi.js"></script>
-    </div>
+			<!-- ############ gauge chart #####################-->
+			<style>
+				.chartdiv {
+					width: 600px;
+					height: 300px;
+				}
+			</style>
+			<script src="chart.js"></script>
+
+			<div class=chartdiv>
+			</div>
+
+			<!-- ############ kospi vs index line chart #####################-->
+
+			<div id=linechart>
+				<canvas id="index_line" style="height:30vh; width:60vw"></canvas>
+				<script src="./assets/js/index_kospi.js"></script>
+			</div>
 
 
-        <div class="index_text">
-            <p class="index_discription">
-                코스피 공포와 탐욕 지수는 'CNN Fear & Greed Index'를 벤치마킹하여 만든 지수입니다. <br>
-                Momentum, Stock Price Breadth, VIX, P/C Ratio, Safe Haven Demand, Junk Bond Demand 6개의 팩터를 활용해<br>
-                한국 시장의 특성에 맞게 재해석하였습니다.<br>
-                코스피 공포와 탐욕 지수가 높으면 시장이 탐욕구간에 접어들었음을, 낮으면 시장이 공포에 접어들었음으로 판단 할 수 있습니다. <br>
-            </p>
+			<div class="index_text">
+				<p class="index_discription">
+					코스피 공포와 탐욕 지수는 'CNN Fear & Greed Index'를 벤치마킹하여 만든 지수입니다. Momentum, Stock Price Breadth, VIX, P/C Ratio, Safe Haven Demand, Junk Bond Demand 6개의 팩터를 활용해<br>
+					한국 시장의 특성에 맞게 재해석하였습니다. 코스피 공포와 탐욕 지수가 높으면 시장이 탐욕구간에 접어들었음을, 낮으면 시장이 공포에 접어들었음으로 판단 할 수 있습니다. <br>
+				</p>
 
-        </div>
-   
-    
-    <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style4" />
-    <h1>
-            <br>
-		 <br>
-		 <br>
-		 <br>
-     </h1>    
-    <section id="momentum">
-        <h1>
-            <b1>Momentum - 코스피 모멘텀 팩터</b1>
-        </h1>
+			</div>
 
-        
-        <div class="kospi_momentum_canvas">
-            <canvas id="kospi_momentum" style="height:30vh; width:75%"></canvas>
-            <script src="./assets/js/kospi_ema.js"></script>
-        </div>
-    
-    
+			<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style4" />
+			
+			<h1>
+				<br>
+				<br>
+				<br>
+			</h1>    
+			<section id="momentum">
+				<h1>
+					<b1>Momentum - 코스피 모멘텀 팩터</b1>
+				</h1>
 
-        <div class="momentum_text">
-            <p class="momentum_discription">
-                KOSPI 지수가 125일 이동 평균선을 상회할 때, 탐욕 신호 해석해 지수 상승에 영향을 미칩니다. <br>
-                반면 KOSPI 지수가 125일 이동 평균선을 하회할 때, 공포 신호 해석해 지수 하락에 영향을 미칩니다. <br>
-                공포와 탐욕 지수는 KOSPI의 하락 추세를 공포, 상승 추세를 탐욕에 대한 요소로 판단합니다.
-            </p>
+				<div class="kospi_momentum_canvas">
+					<canvas id="kospi_momentum" style="height:30vh; width:75%"></canvas>
+					<script src="./assets/js/kospi_ema.js"></script>
+				</div>
+				
+				<div class="momentum_text">
+					<p class="momentum_discription">
+						KOSPI 지수가 125일 이동 평균선을 상회할 때, 탐욕 신호 해석해 지수 상승에 영향을 미칩니다.
+						반면 KOSPI 지수가 125일 이동 평균선을 하회할 때, 공포 신호 해석해 지수 하락에 영향을 미칩니다.
+						공포와 탐욕 지수는 KOSPI의 하락 추세를 공포, 상승 추세를 탐욕에 대한 요소로 판단합니다.
+					</p>
+				</div>
+			</section>
 
-        </div>
-    </section>
-    
-    <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style4" />
-    <h1>
-            <br>
-		 <br>
-		 <br>
-		 <br>
-     </h1>    
-    <section id="breadth">
-        <h1>
-            <b1>Stock Price Breadth - 주가 성장 팩터</b1>
-    	</h1>
-        <div id="mcclenllan">
-            <canvas id="mcclenllan_chart" style="height:30vh; width:60vw"></canvas>
-            <script src="./assets/js/stock_breadth.js"></script>
-    
-        </div>
-        <div class="mcclenllan_text">
-            <p class="mcclenllan_discription">
-                주가 성장 팩터는 KOSPI에 상장된 주식 중 상승한 주식 수와 하락한 주식 수의 차이를 나타냅니다.<br>
-                하락한 주식 수보다 상승한 주식 수 더 높을 때, 강세 신호이고, <br>
-                반대로 상승한 주식 수보다 하락한 주식 수가 더 높다면 약세 신호입니다. <br>
-                코스피 상장 주식의 신고가의 수와 신저가의 수의 차이을 Mcclellan Summation Index로 나타냈습니다.
-            </p>
+			<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style4" />
 
-        </div>
-    </section>
-    
-    <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style4" />
-    <h1>
-            <br>
-		 <br>
-		 <br>
-		 <br>
-     </h1>    
-    <section id="vix">
-        <h1>
-            <b1>VIX - 시장 변동성</b1>
-        </h1>
+			<h1>
+				<br>
+				<br>
+				<br>
+			</h1>    
+			
+			<section id="breadth">
+				<h1>
+					<b1>Stock Price Breadth - 주가 성장 팩터</b1>
+				</h1>
+				<div id="mcclenllan">
+					<canvas id="mcclenllan_chart" style="height:30vh; width:60vw"></canvas>
+					<script src="./assets/js/stock_breadth.js"></script>
 
-        <div id="vix">
-            <canvas id="vix_chart" style="height:30vh; width:60vw"></canvas>
-            <script src="./assets/js/vix_ema.js"></script>
-        </div>
+				</div>
+				<div class="mcclenllan_text">
+					<p class="mcclenllan_discription">
+						주가 성장 팩터는 KOSPI에 상장된 주식 중 상승한 주식 수와 하락한 주식 수의 차이를 나타냅니다.<br>
+						하락한 주식 수보다 상승한 주식 수 더 높을 때, 강세 신호이고, <br>
+						반대로 상승한 주식 수보다 하락한 주식 수가 더 높다면 약세 신호입니다. <br>
+						코스피 상장 주식의 신고가의 수와 신저가의 수의 차이을 Mcclellan Summation Index로 나타냈습니다.
+					</p>
 
-        <div class="vix_text">
-            <p class="vix_discription">
-                공포 지수로 불리는 변동성 지수는 향후 주식시장이 어느 정도로 움직일지 반영되어 있습니다.<br>
-                VIX 지수는 향후 30일 동안 코스피 지수 옵션의 예상 가격 변동 또는 변동성을 측정합니다. <br>
-                또한, 시장이 폭락할 때 큰 폭으로 상승하고, 시장이 급등하는 날에 하락하는 특성이 있습니다. <br>
-                VIX의 상승은 공포 신호, 하락은 탐욕 신호로 판단합니다.
+				</div>
+			</section>
 
-            </p>
+			<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style4" />
+			<h1>
+				<br>
+				<br>
+				<br>
+			</h1>    
 
-        </div>
-    </section>
-    
-    <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style4" />
-    <h1>
-            <br>
-		 <br>
-		 <br>
-		 <br>
-     </h1>    
-    <section id="pcratio">
-        <h1>
-            <b1>Put / Call Raio - 풋옵션 콜옵션 비율</b1>
-        </h1>
+		
+			<section id="vix">
+				<h1>
+					<b1>VIX - 시장 변동성</b1>
+				</h1>
 
-        <div id="putcall">
-            <canvas id="putcall_chart" style="height:30vh; width:60vw"></canvas>
-            <script src="./assets/js/put_call_ema.js"></script>
-            
-        </div>
-            <div class="putcall_text">
-            <p class="putcall_discription">
-                옵션은 주식, 지수 또는 기타 금융 증권을 정해진 가격과 날짜에 사고팔 수 있는 권리를 주는 계약입니다.<br>
-                풋옵션은 정해진 가격으로 미래에 팔 수 있는 권리, 콜옵션을 살 수 있는 권리입니다.<br>
-                풋옵션은 지수가 하락할 것으로 예상될 때 거래량이 많아지고, 
-                콜옵션은 지수가 상승할 것으로 예상될 때 거래량이 많아집니다. <br>
-                Put - Call Ratio는 풋옵션 거래량을 콜옵션 거래량으로 나눈 값으로, 
-                Put - Call Ratio의 상승은 공포신호로 판단합니다.
-            </p>
+				<div id="vix">
+					<canvas id="vix_chart" style="height:30vh; width:60vw"></canvas>
+					<script src="./assets/js/vix_ema.js"></script>
+				</div>
 
-        </div>
-    </section>
-    
-    <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style4" />
-    <h1>
-            <br>
-		 <br>
-		 <br>
-		 <br>
-     </h1>    
-    <section id="safehaven">
-        <h1>
-            <b1>Safe Haven Demand - 안전 자산 수요</b1>
-        </h1>
+				<div class="vix_text">
+					<p class="vix_discription">
+						공포 지수로 불리는 변동성 지수는 향후 주식시장이 어느 정도로 움직일지 반영되어 있습니다.<br>
+						VIX 지수는 향후 30일 동안 코스피 지수 옵션의 예상 가격 변동 또는 변동성을 측정합니다. <br>
+						또한, 시장이 폭락할 때 큰 폭으로 상승하고, 시장이 급등하는 날에 하락하는 특성이 있습니다. <br>
+						VIX의 상승은 공포 신호, 하락은 탐욕 신호로 판단합니다.
 
-        <div id="safe_demand">
-            <canvas id="safe_demand_chart" style="height:30vh; width:60vw"></canvas>
-            <script src="./assets/js/safe_haven.js"></script>
-            
-        </div>
-        <div class="safe_demand_text">
-            <p class="safe_demand_discription">
-                주식은 손실 위험이 있는 반면 채권은 원금 손실의 위험이 없기 때문에 주식은 위험자산 채권은 안전자산으로 분류됩니다. <br>
-                안전자산 수요는 코스피의 20일 동안 수익률과 한국 10년 국채 수익률의 차이를 나타내는 팩터입니다. <br>
-                시장이 공포로 기울 때 채권의 수요는 늘어나고 이에 따라 국채 수익률은 상승하게 됩니다. <br>
-                따라서 코스피 수익률과 국채 수익률의 차이를 나타낸 해당 팩터의 하락은 안전자산의 선호 심리, 공포신호로 판단합니다.
-            </p>
+					</p>
 
-        </div>
-    </section>
-    
-    <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style4" />
-    <h1>
-            <br>
-		 <br>
-		 <br>
-		 <br>
-     </h1>
-    <section id="junkbond">
-        <h1>
-            <b1>Junk Bond Demand - 정크 본드 수요</b1>
-        </h1>
+				</div>
+			</section>
 
-        <div id="junk_demand">
-            <canvas id="junk_bond_chart" style="height:30vh; width:60vw"></canvas>
-            <script src="./assets/js/junk_bond.js"></script>
-            
-        </div>
-        <div class="junk_demand_text">
-            <p class="junk_demand_discription">
-                회사채는 국고채보다 채무 불이행 위험이 높아 주식과 비슷한 성질을 가지고 있습니다. <br>
-                채권은 수요가 증가할 때 가격은 오르고 회사채 수익률은 떨어집니다. <br>
-                반대로, 시장에 공포가 만연해 회사채 수요가 감소면, 회사채 수익률이 상승합니다. <br>
-                이때 투자자들이 안전자산을 선호하는 경향이 생기게 되며, 리스크 있는 회사채와 국고채 사이 금리 차이가 증가합니다. <br>
-                회사채 수익률과 국고채 수익률을 뺀 정크본드 수요팩터의 증가는 공포신호로 판단합니다.
-            </p>
-    	</div>
-    </section>
-    
-    
-   
-    <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+			<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style4" />
+			
+			<h1>
+				<br>
+				<br>
+				<br>
+			</h1>    
+			
+			<section id="pcratio">
+				<h1>
+					<b1>Put / Call Raio - 풋옵션 콜옵션 비율</b1>
+				</h1>
 
-    
-    
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	
- 	
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@^3"></script>
-    <script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
-    
-    
-    
-    
-    <script src="./assets/js/jquery.scrollex.min.js"></script>
-    <script src="./assets/js/jquery.scrolly.min.js"></script>
-    <script src="./assets/js/browser.min.js"></script>
-    <script src="./assets/js/breakpoints.min.js"></script>
-    <script src="./assets/js/util.js"></script>
-    <script src="./assets/js/main.js"></script>
-    
-    
-</body>
+				<div id="putcall">
+					<canvas id="putcall_chart" style="height:30vh; width:60vw"></canvas>
+					<script src="./assets/js/put_call_ema.js"></script>
+
+				</div>
+				<div class="putcall_text">
+					<p class="putcall_discription">
+						옵션은 주식, 지수 또는 기타 금융 증권을 정해진 가격과 날짜에 사고팔 수 있는 권리를 주는 계약입니다.<br>
+						풋옵션은 정해진 가격으로 미래에 팔 수 있는 권리, 콜옵션을 살 수 있는 권리입니다.<br>
+						풋옵션은 지수가 하락할 것으로 예상될 때 거래량이 많아지고, 
+						콜옵션은 지수가 상승할 것으로 예상될 때 거래량이 많아집니다. <br>
+						Put - Call Ratio는 풋옵션 거래량을 콜옵션 거래량으로 나눈 값으로, 
+						Put - Call Ratio의 상승은 공포신호로 판단합니다.
+					</p>
+
+				</div>
+			</section>
+
+			<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style4" />
+			<h1>
+				<br>
+				<br>
+				<br>
+			</h1>    
+			
+			<section id="safehaven">
+				<h1>
+					<b1>Safe Haven Demand - 안전 자산 수요</b1>
+				</h1>
+				
+				<div id="safe_demand">
+					<canvas id="safe_demand_chart" style="height:30vh; width:60vw"></canvas>
+					<script src="./assets/js/safe_haven.js"></script>
+
+
+				</div>
+				<div class="safe_demand_text">
+					<p class="safe_demand_discription">
+						주식은 손실 위험이 있는 반면 채권은 원금 손실의 위험이 없기 때문에 주식은 위험자산 채권은 안전자산으로 분류됩니다. <br>
+						안전자산 수요는 코스피의 20일 동안 수익률과 한국 10년 국채 수익률의 차이를 나타내는 팩터입니다. <br>
+						시장이 공포로 기울 때 채권의 수요는 늘어나고 이에 따라 국채 수익률은 상승하게 됩니다. <br>
+						따라서 코스피 수익률과 국채 수익률의 차이를 나타낸 해당 팩터의 하락은 안전자산의 선호 심리, 공포신호로 판단합니다.
+					</p>
+
+				</div>
+			</section>
+
+			<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style4" />
+			<h1>
+				<br>
+				<br>
+				<br>
+			</h1>
+			<section id="junkbond">
+				<h1>
+					<b1>Junk Bond Demand - 정크 본드 수요</b1>
+				</h1>
+
+				<div id="junk_demand">
+					<canvas id="junk_bond_chart" style="height:30vh; width:60vw"></canvas>
+					<script src="./assets/js/junk_bond.js"></script>
+
+				</div>
+				<div class="junk_demand_text">
+					<p class="junk_demand_discription">
+						회사채는 국고채보다 채무 불이행 위험이 높아 주식과 비슷한 성질을 가지고 있습니다. <br>
+						채권은 수요가 증가할 때 가격은 오르고 회사채 수익률은 떨어집니다. <br>
+						반대로, 시장에 공포가 만연해 회사채 수요가 감소면, 회사채 수익률이 상승합니다. <br>
+						이때 투자자들이 안전자산을 선호하는 경향이 생기게 되며, 리스크 있는 회사채와 국고채 사이 금리 차이가 증가합니다. <br>
+						회사채 수익률과 국고채 수익률을 뺀 정크본드 수요팩터의 증가는 공포신호로 판단합니다.
+					</p>
+				</div>
+			</section>
+			
+			<footer id="footer">
+				<div class="inner">
+					<ul class="copyright">
+						<li>&copy; Untitled</li><li>Design: HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@^3"></script>
+	<script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.poptrox.min.js"></script>
+	<script src="./assets/js/browser.min.js"></script>
+	<script src="./assets/js/breakpoints.min.js"></script>
+	<script src="./assets/js/util.js"></script>
+	<script src="./assets/js/main.js"></script>
+
+	</body>
 
 </html>
