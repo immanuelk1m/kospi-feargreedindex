@@ -66,7 +66,7 @@ if(chart.logo){
     chart.logo.disabled = true;
 }
 chart.hiddenState.properties.opacity = 0;
-chart.fontSize = 8; // Fear font Size
+chart.fontSize = 8.5; // Fear font Size
 chart.innerRadius = am4core.percent(80);
 chart.resizable = true;
 
