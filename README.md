@@ -1,1 +1,1 @@
-# kospi-feargreedindex
+# kospi_fear_greed_index
