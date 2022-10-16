@@ -61,6 +61,9 @@ function lookUpGrade(lookupScore, grades) {
 
 // create chart
 var chart = am4core.create("chartdiv", am4charts.GaugeChart);
+if(chart.logo){
+    chart.logo.disabled = true;
+}
 chart.hiddenState.properties.opacity = 0;
 chart.fontSize = 8; // Fear font Size
 chart.innerRadius = am4core.percent(80);
