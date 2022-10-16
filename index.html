@@ -65,15 +65,20 @@
 
 			<script src="chart.js"></script>
 			<style>
-				height:50vh; 
-				width:80%;
-				text-align: center;
-				margin: 0 auto;
+				#chartout {
+					width: 100%;
+					text-align: center;
+				}
+				#chartdiv {
+					height:50vh; 
+					width:80%;
+					display: inline-block;
+				}
 				
 			</style>
-
-			<div class=chartdiv></div>
-
+			<div class = chartout>
+				<div class=chartdiv></div>
+			</div>
 			<!-- ############ kospi vs index line chart #####################-->
 
 			<div id=linechart>
