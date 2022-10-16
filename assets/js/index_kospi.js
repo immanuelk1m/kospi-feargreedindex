@@ -64,7 +64,11 @@ loadItems().then((items) => {
                     unit: 'month',
                     tooltipFormat:'MM/dd/yyyy',
                     
-                }
+                },
+              ticks: {
+                autoSkip: true,
+                maxTicksLimit: 6
+              }
             },
             A: {
                 type: 'linear',
