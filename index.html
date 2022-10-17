@@ -44,18 +44,18 @@
 
 			<script>
 				$(document).ready(function() {
-					$('.chartdiv').show(); //페이지를 로드할 때 표시할 요소
+					$('.chartout').show(); //페이지를 로드할 때 표시할 요소
 					$('#linechart').hide(); //페이지를 로드할 때 숨길 요소
 
 					document.getElementById("index").onclick =function(){
 						alert('hi);
 						$ ('#linechart').hide(); //클릭 시 첫 번째 요소 숨김
-						$ ('.chartdiv').show(); //클릭 시 두 번째 요소 표시
+						$ ('.chartout').show(); //클릭 시 두 번째 요소 표시
 						return false;
 					};
 
 					document.getElementById("chart").onclick =function(){
-						$ ('.chartdiv').hide(); //클릭 시 첫 번째 요소 숨김
+						$ ('.chartout').hide(); //클릭 시 첫 번째 요소 숨김
 						$ ('#linechart').show(); //클릭 시 두 번째 요소 표시
 						return false;
 					};
