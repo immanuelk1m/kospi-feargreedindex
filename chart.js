@@ -67,7 +67,7 @@ if(chart.logo){
 }
 chart.hiddenState.properties.opacity = 0;
 chart.fontSize = 7; // Fear font Size
-chart.innerRadius = am4core.percent(80);
+chart.innerRadius = am4core.percent(70);
 chart.resizable = true;
 
 /**
@@ -78,16 +78,16 @@ var axis = chart.xAxes.push(new am4charts.ValueAxis());
 axis.min = chartMin;
 axis.max = chartMax;
 axis.strictMinMax = true;
-axis.renderer.radius = am4core.percent(80);
+axis.renderer.radius = am4core.percent(60);
 axis.renderer.inside = true;
-axis.renderer.line.strokeOpacity = 0.1;
+axis.renderer.line.strokeOpacity = 0.2;
 axis.renderer.ticks.template.disabled = false;
 axis.renderer.ticks.template.strokeOpacity = 1;
 axis.renderer.ticks.template.strokeWidth = 0.5;
-axis.renderer.ticks.template.length = 5;
+axis.renderer.ticks.template.length = 10;
 axis.renderer.grid.template.disabled = true;
-axis.renderer.labels.template.radius = am4core.percent(15);
-axis.renderer.labels.template.fontSize = "1.4em";
+axis.renderer.labels.template.radius = am4core.percent(20);
+axis.renderer.labels.template.fontSize = "1.6em";
 
 /**
  * Axis for ranges
@@ -141,7 +141,7 @@ var label = chart.radarContainer.createChild(am4core.Label);
 label.isMeasured = false;
 label.fontSize = "4em";
 label.x = am4core.percent(50);
-label.paddingBottom = 30;
+label.paddingBottom = 25;
 label.horizontalCenter = "middle";
 label.verticalCenter = "bottom";
 //label.dataItem = data;
@@ -168,8 +168,8 @@ label2.fill = am4core.color(matchingGrade.color);
 
 var hand = chart.hands.push(new am4charts.ClockHand());
 hand.axis = axis2;
-hand.innerRadius = am4core.percent(55);
-hand.startWidth = 8;
+hand.innerRadius = am4core.percent(60);
+hand.startWidth = 5;
 hand.pin.disabled = true;
 hand.value = data.score;
 hand.fill = am4core.color("#444");
