@@ -26,7 +26,7 @@ loadItems().then((items) => {
         data: ydata,
         lineTension: 0,
         fill: false,
-        borderColor: 'rgba(77,20,140)'
+        borderColor: 'rgba(77,20,140)',
         pointRadius: 0,
     };
 
