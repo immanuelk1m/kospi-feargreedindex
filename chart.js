@@ -78,7 +78,7 @@ var axis = chart.xAxes.push(new am4charts.ValueAxis());
 axis.min = chartMin;
 axis.max = chartMax;
 axis.strictMinMax = true;
-axis.renderer.radius = am4core.percent(60);
+axis.renderer.radius = am4core.percent(58);
 axis.renderer.inside = true;
 axis.renderer.line.strokeOpacity = 0.2;
 axis.renderer.ticks.template.disabled = false;
@@ -86,8 +86,8 @@ axis.renderer.ticks.template.strokeOpacity = 1;
 axis.renderer.ticks.template.strokeWidth = 0.5;
 axis.renderer.ticks.template.length = 10;
 axis.renderer.grid.template.disabled = true;
-axis.renderer.labels.template.radius = am4core.percent(20);
-axis.renderer.labels.template.fontSize = "1.6em";
+axis.renderer.labels.template.radius = am4core.percent(25);
+axis.renderer.labels.template.fontSize = "1.5em";
 
 /**
  * Axis for ranges
