@@ -66,7 +66,7 @@ if(chart.logo){
     chart.logo.disabled = true;
 }
 chart.hiddenState.properties.opacity = 0;
-chart.fontSize = 8.5; // Fear font Size
+chart.fontSize = 6; // Fear font Size
 chart.innerRadius = am4core.percent(80);
 chart.resizable = true;
 
@@ -128,7 +128,7 @@ for (let grading of data.gradingData) {
   range.label.inside = true;
   range.label.radius = am4core.percent(10);
   range.label.paddingBottom = -5; // ~half font size
-  range.label.fontSize = "2em";
+  range.label.fontSize = "3.2em";
 }
 
 var matchingGrade = lookUpGrade(data.score, data.gradingData);
@@ -139,7 +139,7 @@ var matchingGrade = lookUpGrade(data.score, data.gradingData);
 
 var label = chart.radarContainer.createChild(am4core.Label);
 label.isMeasured = false;
-label.fontSize = "4.5em";
+label.fontSize = "4em";
 label.x = am4core.percent(50);
 label.paddingBottom = 35;
 label.horizontalCenter = "middle";
@@ -155,7 +155,7 @@ label.fill = am4core.color(matchingGrade.color);
 
 var label2 = chart.radarContainer.createChild(am4core.Label);
 label2.isMeasured = false;
-label2.fontSize = "3.5em";
+label2.fontSize = "3em";
 label2.horizontalCenter = "middle";
 label2.verticalCenter = "bottom";
 label2.text = matchingGrade.title.toUpperCase();
