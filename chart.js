@@ -126,7 +126,7 @@ for (let grading of data.gradingData) {
   range.label.inside = true;
   range.label.location = 0.5;
   range.label.inside = true;
-  range.label.radius = am4core.percent(10);
+  range.label.radius = am4core.percent(15);
   range.label.paddingBottom = -5; // ~half font size
   range.label.fontSize = "3.2em";
 }
