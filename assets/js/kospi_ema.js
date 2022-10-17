@@ -29,6 +29,7 @@ loadItems().then((items) => {
         lineTension: 0,
         fill: false,
         borderColor: 'rgba(77,20,140)'
+        pointRadius: 0,
     };
 
     var dataSecond = {
