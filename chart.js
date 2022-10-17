@@ -139,9 +139,9 @@ var matchingGrade = lookUpGrade(data.score, data.gradingData);
 
 var label = chart.radarContainer.createChild(am4core.Label);
 label.isMeasured = false;
-label.fontSize = "6em";
+label.fontSize = "4.5em";
 label.x = am4core.percent(50);
-label.paddingBottom = 50;
+label.paddingBottom = 35;
 label.horizontalCenter = "middle";
 label.verticalCenter = "bottom";
 //label.dataItem = data;
@@ -155,7 +155,7 @@ label.fill = am4core.color(matchingGrade.color);
 
 var label2 = chart.radarContainer.createChild(am4core.Label);
 label2.isMeasured = false;
-label2.fontSize = "4em";
+label2.fontSize = "3.5em";
 label2.horizontalCenter = "middle";
 label2.verticalCenter = "bottom";
 label2.text = matchingGrade.title.toUpperCase();
