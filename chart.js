@@ -189,7 +189,7 @@ hand.events.on("positionchanged", function(){
     
 var current_value;
     
-fetch("value.json")
+fetch("./assets/js/json/value.json")
   .then(response => response.json())
   .then(json => current_value = json.current);
 
