@@ -67,27 +67,6 @@
 			</style>
 			
 			
-			<button id="index" type="button">Index</button>
-			<button id="chart" type="button">Chart</button>
-
-			<script>
-				$(document).ready(function() {
-					$('.chartout').show(); //페이지를 로드할 때 표시할 요소
-					$('#linechart').hide(); //페이지를 로드할 때 숨길 요소
-
-					document.getElementById("index").onclick =function(){
-						$ ('#linechart').hide(); //클릭 시 첫 번째 요소 숨김
-						$ ('.chartout').show(); //클릭 시 두 번째 요소 표시
-						return false;
-					};
-
-					document.getElementById("chart").onclick =function(){
-						$ ('.chartout').hide(); //클릭 시 첫 번째 요소 숨김
-						$ ('#linechart').show(); //클릭 시 두 번째 요소 표시
-						return false;
-					};
-				});
-			</script>
 
 			<!-- ############ gauge chart #####################-->
 
@@ -108,14 +87,7 @@
 			<div class = chartout>
 				<div class=chartdiv></div>
 			</div>
-			<!-- ############ kospi vs index line chart #####################-->
-
-			<div id=linechart>
-				<canvas id="index_line" style="height:30vh; width:94%"></canvas>
-				<script src="./assets/js/index_kospi.js"></script>
-			</div>
-
-
+			
 			<div class="index_text">
 				<p class="index_discription">
 					코스피 공포와 탐욕 지수는 'CNN Fear & Greed Index'를 벤치마킹하여 만든 지수입니다. Momentum, Stock Price Breadth, VIX, P/C Ratio, Safe Haven Demand, Junk Bond Demand 6개의 팩터를 활용해<br>
@@ -123,6 +95,25 @@
 				</p>
 
 			</div>
+			
+			<!-- ############ kospi vs index line chart #####################-->
+			<h1>
+				<b1>코스피 공포와 탐욕지수 & 코스피 비교</b1>
+			</h1>
+
+			<div id=linechart>
+				<canvas id="index_line" style="height:30vh; width:94%"></canvas>
+				<script src="./assets/js/index_kospi.js"></script>
+			</div>
+			<div class="linechart_text">
+				<p class="linechart_discription">
+					.
+				</p>
+
+			</div>
+
+
+			
   
 			<section id="momentum">
 				<h1>
