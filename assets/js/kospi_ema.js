@@ -29,7 +29,7 @@ loadItems().then((items) => {
         lineTension: 0,
         fill: false,
         borderColor: 'rgba(77,20,140)',
-        pointRadius: 0,
+        pointRadius: 1,
     };
 
     var dataSecond = {
@@ -61,7 +61,7 @@ loadItems().then((items) => {
                 type: 'time',
                 time: {
                     unit: 'month',
-                    tooltipFormat:'MM/dd/yyyy',
+                    tooltipFormat:'MM/DD/yyyy',
                     
                 },
               ticks: {
