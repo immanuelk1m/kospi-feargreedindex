@@ -99,13 +99,14 @@
 				<div class=chartdiv></div>
 			</div>
 
-			<div id="index_discription" style="color:#000000">
+			<div id="update_discription" style="color:#000000">
+				최종 업데이트 :
 			</div>		
 			
 			<script>
 				fetch("/assets/js/json/value.json")
 					.then(response => response.json())
-					.then(json => document.getElementById("index_discription").innerHTML = json.update);
+					.then(json => document.getElementById("update_discription").innerHTML = json.update);
 				 
 			</script>
 			
