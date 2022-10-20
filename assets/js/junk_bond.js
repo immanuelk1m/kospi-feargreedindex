@@ -52,7 +52,7 @@ loadItems().then((items) => {
                 type: 'time',
                 time: {
                     unit: 'month',
-                    tooltipFormat:'MM/dd/yyyy',
+                    tooltipFormat:'MM/DD/yyyy',
                     
                 },
               ticks: {
