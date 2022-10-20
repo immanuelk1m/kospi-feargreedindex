@@ -98,9 +98,19 @@
 			<div class = chartout>
 				<div class=chartdiv></div>
 			</div>
-			<p class="index_discription" style="color:#000000">
-				마지막 업데이트 2022년 10월 20일
-			</p>
+			
+			
+			<script>
+				var update_date;
+				fetch("./assets/js/json/value.json")
+					.then(response => response.json())
+					.then(json => update_date = json.update);
+				document.getElementById("index_discription").innerHTML = update_date;
+			</script>
+			
+			<div id="index_discription" style="color:#000000">
+	
+			</div>
 				
 			<div class="index_text">
 				<p class="index_discription">
