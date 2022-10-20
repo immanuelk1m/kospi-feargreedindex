@@ -104,7 +104,7 @@
 			
 			<script>
 				var update_date;
-				fetch("./assets/js/json/value.json")
+				fetch("assets/js/json/value.json")
 					.then(response => response.json())
 					.then(json => update_date = json.update);
 				document.getElementById("index_discription").innerHTML = update_date;
