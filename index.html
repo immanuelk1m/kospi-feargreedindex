@@ -140,7 +140,7 @@
 					<script src="./assets/js/index_kospi.js"></script>
 				</div>
 				
-				<p class="jump"> <br> </p>
+				<p class="jump"></p>
 				
 				<div class="linechart_text" style="background-color: #FFFFFF">
 					<p class="linechart_discription" style="color:black; font-size: 80%;">
@@ -154,26 +154,24 @@
 				</div>
 			</div>
 			
-			
+			<hr style="border: 1px solid gray;">
   
-			<div id="momentum">
-				<hr style="border: 1px solid gray;">
-				
-				<br>
-				<br>				
-				
-				<h2 style="color:#000000">
-					<b1>Momentum - 코스피 모멘텀 팩터</b1>
-				</h2>
-
-				<div class="kospi_momentum_canvas">
+			<div id="momentum">				
+				<div class="kospi_momentum_canvas" style="background-color: #FFFFFF">
+					
+					<h2 style="color:#000000">
+						<b1>Momentum - 코스피 모멘텀 팩터</b1>
+					</h2>
+					
 					<canvas id="kospi_momentum" style="height:30vh; width:94%"></canvas>
 					<script src="./assets/js/kospi_ema.js"></script>
 				</div>
 				
-				<div class="momentum_text">
+				<p class="jump"></p>
+				
+				<div class="momentum_text" style="background-color: #FFFFFF">
 					<p class="momentum_discription" style="color:black; font-size: 80%;">
-						<br>
+				
 						KOSPI 지수가 상승추세로 125일 이동 평균선을 상회한다면, 탐욕의 신호로 해석합니다.
 						반면 KOSPI 지수가 하락추세로 125일 이동 평균선을 하회한다면, 공포 신호 해석합니다.
 						공포와 탐욕 지수는 KOSPI의 하락 추세를 공포, 상승 추세를 탐욕에 대한 요소로 판단합니다.
@@ -186,20 +184,22 @@
 				
 			</div>
 			
+			<hr style="border: 1px solid gray;">
 			
 			<div id="breadth">
-				<hr style="border: 1px solid gray;">
 				
-				<br>
-				<br>
-				<h2 style="color:#000000">
-					<b1>Stock Price Breadth - 주가 성장 팩터</b1>
-				</h2>
 				<div id="mcclenllan">
+
+					<h2 style="color:#000000">
+						<b1>Stock Price Breadth - 주가 성장 팩터</b1>
+					</h2>
+					
 					<canvas id="mcclenllan_chart" style="height:30vh; width:94%"></canvas>
 					<script src="./assets/js/stock_breadth.js"></script>
-
 				</div>
+				
+				<p class="jump"></p>
+				
 				<div class="mcclenllan_text">
 					<p class="mcclenllan_discription" style="color:black; font-size: 80%;">
 						<br>
@@ -215,21 +215,21 @@
 				</div>
 			</div>
 			
-			
+			<hr style="border: 1px solid gray;">
 			
 			<div id="vix">
-				<hr style="border: 1px solid gray;">
 				
-				<br>
-				<br>
-				<h2 style="color:#000000">
-					<b1>VIX - 시장 변동성</b1>
-				</h2>
-
 				<div id="vix">
+					
+					<h2 style="color:#000000">
+						<b1>VIX - 시장 변동성</b1>
+					</h2>
+					
 					<canvas id="vix_chart" style="height:30vh; width:94%"></canvas>
 					<script src="./assets/js/vix_ema.js"></script>
 				</div>
+				
+				<p class="jump"></p>
 
 				<div class="vix_text">
 					<p class="vix_discription" style="color:black; font-size: 80%;">
@@ -247,22 +247,25 @@
 				</div>
 			</div>
 			
-			
+			<hr style="border: 1px solid gray;">
 			
 			<div id="pcratio">
-				<hr style="border: 1px solid gray;">
 				
-				<br>
-				<br>
-				<h2 style="color:#000000">
-					<b1>Put / Call Raio - 풋옵션 콜옵션 비율</b1>
-				</h2>
+				
 
 				<div id="putcall">
+					
+					<h2 style="color:#000000">
+						<b1>Put / Call Raio - 풋옵션 콜옵션 비율</b1>
+					</h2>
+					
 					<canvas id="putcall_chart" style="height:30vh; width:94%"></canvas>
 					<script src="./assets/js/put_call_ema.js"></script>
 
 				</div>
+				
+				<p class="jump"></p>
+				
 				<div class="putcall_text">
 					<p class="putcall_discription" style="color:black; font-size: 80%;">
 						<br>
@@ -280,24 +283,24 @@
 				</div>
 			</div>
 			
+			<hr style="border: 1px solid gray;">
 			
-
 			<div id="safehaven">
-				<hr style="border: 1px solid gray;">
-				
-
-				<br>
-				<br>
-				<h2 style="color:#000000">
-					<b1>Safe Haven Demand - 안전 자산 수요</b1>
-				</h2>
-				
+			
 				<div id="safe_demand">
+					
+					<h2 style="color:#000000">
+						<b1>Safe Haven Demand - 안전 자산 수요</b1>
+					</h2>
+					
 					<canvas id="safe_demand_chart" style="height:30vh; width:94%"></canvas>
 					<script src="./assets/js/safe_haven.js"></script>
 
 
 				</div>
+				
+				<p class="jump"></p>
+				
 				<div class="safe_demand_text">
 					<p class="safe_demand_discription" style="color:black; font-size: 80%;">
 						<br>
@@ -314,24 +317,24 @@
 				</div>
 			</div>
 			
-
-
+			<hr style="border: 1px solid gray;">
+			
 			<div id="junkbond">
-				<hr style="border: 1px solid gray;">
-				
-				<br>
-				<br>
-				<h2 style="color:#000000">
-					<b1>Junk Bond Demand - 정크 본드 수요</b1>
-				</h2>
-
+						
 				<div id="junk_demand">
+					<h2 style="color:#000000">
+						<b1>Junk Bond Demand - 정크 본드 수요</b1>
+					</h2>
+
 					<canvas id="junk_bond_chart" style="height:30vh; width:94%"></canvas>
 					<script src="./assets/js/junk_bond.js"></script>
 
 				</div>
+				
+				<p class="jump"></p>
+				
 				<div class="junk_demand_text">
-					<p class="junk_demand_discription" style="color:black; font-size: 75%;">
+					<p class="junk_demand_discription" style="color:black; font-size: 80%;">
 						<br>
 						회사채는 국고채보다 채무 불이행 위험이 높아 주식과 비슷한 성질을 가지고 있습니다. 
 						채권은 수요가 증가할 때 가격은 오르며 이에 따라 회사채 수익률은 떨어집니다.
