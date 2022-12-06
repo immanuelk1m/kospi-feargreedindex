@@ -1,5 +1,5 @@
 function loadItems() {
-  return fetch("assets/js/json/vix_close.json") // change
+  return fetch("https://www.kospi-fear-greed-index.co.kr/assets/js/json/vix_close.json") // change
     .then((response) => response.json())
     .then((json) => json);
 }
