@@ -1,5 +1,5 @@
 function loadItems() {
-  return fetch("assets/js/json/kospi.json")
+  return fetch("https://www.kospi-fear-greed-index.co.kr/assets/js/json/kospi.json")
     .then((response) => response.json())
     .then((json) => json);
 }
