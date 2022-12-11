@@ -9,7 +9,7 @@ loadItems().then((items) => {
   var data = items  
   
   var options = {
-    data ,
+    series: data ,
     
     chart: {
     height: 350,
