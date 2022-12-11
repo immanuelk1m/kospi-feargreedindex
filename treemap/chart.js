@@ -6,13 +6,11 @@ function loadItems() {
 
 loadItems().then((items) => {
   
+  var data = items  
   
-
-
-
-var options = {
-  items  
-  ,
+  var options = {
+    data ,
+    
     chart: {
     height: 350,
     type: 'line',
@@ -57,7 +55,7 @@ var options = {
   }
   },
     
-  
+
   tooltip: {
     y: [
       {
