@@ -6,7 +6,7 @@ function loadItems() {
 
 loadItems().then((items) => {
   
-  var data = items  
+  var data = items.series 
   
   var options = {
     series: data ,
