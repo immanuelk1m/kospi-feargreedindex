@@ -5,14 +5,13 @@ function loadItems() {
 }
 
 loadItems().then((items) => {
-  console.log(items);
-  });
+  
   
 
 
 
 var options = {
-  data  
+  items  
   ,
     chart: {
     height: 350,
@@ -94,3 +93,4 @@ var options = {
 
 
 
+});
