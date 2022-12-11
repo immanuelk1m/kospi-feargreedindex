@@ -5,7 +5,7 @@ function loadItems() {
 }
 
 loadItems().then((items) => {
-  console().them(items);
+  console.log(items);
   });
   
 
