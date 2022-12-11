@@ -6,7 +6,8 @@ function loadItems() {
 
 loadItems().then((items) => {
   
-  var data = items.series 
+  var data = items.series;
+  var date = items.categories;
   
   var options = {
     series: data ,
@@ -42,10 +43,8 @@ loadItems().then((items) => {
     }
   },
   xaxis: {
-    categories: ['01 Jan', '02 Jan', '03 Jan', '04 Jan', '05 Jan', '06 Jan', '07 Jan', '08 Jan', '09 Jan',
-      '10 Jan', '11 Jan', '12 Jan'
-    ],
-    tickAmount: 2
+    categories: date,
+    tickAmount: 7
   },
   yaxis : {
     forceNiceScale: false,
