@@ -47,8 +47,10 @@ loadItems().then((items) => {
     tickAmount: 7
   },
   yaxis : {
+    opposite : true,
     forceNiceScale: false,
-    max: 100,
+    min: -50,
+    max: 50,
     labels: {
       formatter: (value) => value.toFixed(0)+'%',
   }
