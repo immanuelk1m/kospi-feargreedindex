@@ -62,7 +62,9 @@ loadItems().then((items) => {
     y: [
       {
         title: {
-          formatter: val
+          formatter: function (val) {
+            return val
+          }
         }
       },
       {
