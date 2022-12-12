@@ -16,7 +16,7 @@ loadItems().then((items) => {
     height: 350,
     type: 'line',
     zoom: {
-      enabled: false
+      enabled: true
     },
   },
   dataLabels: {
@@ -28,7 +28,7 @@ loadItems().then((items) => {
     dashArray: [0, 8, 5]
   },
   title: {
-    text: 'Page Statistics',
+    text: '코스피 산업 분야별 성과',
     align: 'middle'
   },
   legend: {
@@ -48,9 +48,10 @@ loadItems().then((items) => {
   },
   yaxis : {
     opposite : true,
-    forceNiceScale: false,
+    forceNiceScale: true,
     min: -50,
-    max: 50,
+    max: 40,
+    tickAmount: 5,
     labels: {
       formatter: (value) => value.toFixed(0)+'%',
   }
