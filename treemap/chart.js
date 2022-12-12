@@ -62,15 +62,13 @@ loadItems().then((items) => {
     y: [
       {
         title: {
-          formatter: function (val) {
-            return val + " (mins)"
-          }
+          formatter: val
         }
       },
       {
         title: {
           formatter: function (val) {
-            return val + " per session"
+            return val
           }
         }
       },
