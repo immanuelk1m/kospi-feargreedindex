@@ -25,7 +25,7 @@ loadItems().then((items) => {
   },
   stroke: {
     width: [5, 7, 5],
-    curve: 'straight',
+    curve: 'smmoth',
     dashArray: [0, 8, 5]
   },
   title: {
@@ -54,7 +54,7 @@ loadItems().then((items) => {
   yaxis : {
     opposite : true,
     forceNiceScale: true,
-    min: -50,
+    min: -40,
     max: 40,
     tickAmount: 5,
     labels: {
@@ -64,29 +64,17 @@ loadItems().then((items) => {
     
 
   tooltip: {
-    y: [
+    shared: true,
+    intersect: false,
+    y: 
       {
         title: {
           formatter: function (val) {
-            return val
+            return val + "%"
           }
         }
       },
-      {
-        title: {
-          formatter: function (val) {
-            return val
-          }
-        }
-      },
-      {
-        title: {
-          formatter: function (val) {
-            return val;
-          }
-        }
-      }
-    ]
+    
   },
   grid: {
     borderColor: '#f1f1f1',
