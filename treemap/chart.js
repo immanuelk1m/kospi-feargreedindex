@@ -43,8 +43,12 @@ loadItems().then((items) => {
     }
   },
   xaxis: {
+    type: 'datetime',
+    labels: {
+      format: 'MM yyyy'
+    },
     categories: date,
-    tickAmount: 7
+    tickAmount: 5
   },
   yaxis : {
     opposite : true,
