@@ -13,7 +13,6 @@ loadItems().then((items) => {
     series: data ,
     
     chart: {
-    width : '100%',
     height: 600,
     type: 'line',
     zoom: {
@@ -21,7 +20,7 @@ loadItems().then((items) => {
     },
   },
   dataLabels: {
-    enabled: false
+    enabled: true
   },
   stroke: {
     width: [5, 7, 5],
@@ -70,7 +69,7 @@ loadItems().then((items) => {
       {
         title: {
           formatter: function (val) {
-            return val + "%"
+            return val + "%";
           }
         }
       },
