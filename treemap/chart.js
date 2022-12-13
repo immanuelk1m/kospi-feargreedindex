@@ -13,8 +13,8 @@ loadItems().then((items) => {
     series: data ,
     
     chart: {
-    width : '75%',
-    height: 480,
+    width : '100%',
+    height: 600,
     type: 'line',
     zoom: {
       enabled: true
