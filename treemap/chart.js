@@ -20,7 +20,7 @@ loadItems().then((items) => {
     },
   },
   dataLabels: {
-    enabled: true
+    enabled: false
   },
   stroke: {
     width: [5, 7, 5],
