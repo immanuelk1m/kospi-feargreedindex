@@ -24,7 +24,7 @@ loadItems().then((items) => {
   },
   stroke: {
     width: [5, 7, 5],
-    curve: 'smmoth',
+    curve: 'straight',
     dashArray: [0, 8, 5]
   },
   title: {
