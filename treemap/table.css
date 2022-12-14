@@ -12,7 +12,7 @@
 #sector_table tr:first-child {
   border-top: none;
   background: #428bca;
-  color: #fff;
+  color: #000000;
 }
 
 #sector_table tr {
@@ -46,7 +46,7 @@
   font-weight: bold;
   width: 120px;
   display: inline-block;
-  color: #000;
+  color: #000000;
 }
 
 #sector_table th,
