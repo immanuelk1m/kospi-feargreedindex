@@ -1,0 +1,148 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:600,700';
+
+* {font-family: 'Open Sans', sans-serif;}
+
+#sector_table {
+  margin: auto;
+  min-width: 300px;
+  max-width: 100%;
+  border-collapse: collapse;
+}
+
+#sector_table tr:first-child {
+  border-top: none;
+  background: #428bca;
+  color: #000000;
+}
+
+#sector_table tr {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background-color: #f5f9fc;
+}
+
+#sector_table tr:nth-child(odd):not(:first-child) {
+  background-color: #ebf3f9;
+}
+
+#sector_table th {
+  display: none;
+}
+
+#sector_table td {
+  display: block;
+}
+
+#sector_table td:first-child {
+  margin-top: .5em;
+}
+
+#sector_table td:last-child {
+  margin-bottom: .5em;
+}
+
+#sector_table td:before {
+  content: attr(data-th) ": ";
+  font-weight: bold;
+  width: 120px;
+  display: inline-block;
+  color: #000000;
+}
+
+#sector_table th,
+#sector_table td {
+  text-align: center;
+}
+
+#sector_table {
+  color: #333;
+  border-radius: .4em;
+  overflow: hidden;
+}
+
+#sector_table tr {
+  border-color: #bfbfbf;
+}
+
+#sector_table th,
+#sector_table td {
+  padding: .5em 1em;
+}
+@media screen and (max-width: 601px) {
+  #sector_table tr:nth-child(2) {
+    border-top: none;
+  }
+}
+@media screen and (min-width: 600px) {
+  #sector_table tr:hover:not(:first-child) {
+    background-color: #d8e7f3;
+  }
+  #sector_table td:before {
+    display: none;
+  }
+  #sector_table th,
+  #sector_table td {
+    display: table-cell;
+    padding: .25em .5em;
+  }
+  #sector_table th:first-child,
+  #sector_table td:first-child {
+    padding-left: 0;
+  }
+  #sector_table th:last-child,
+  #sector_table td:last-child {
+    padding-right: 0;
+  }
+  #sector_table th,
+  #sector_table td {
+    padding: 1em !important;
+  }
+}
+
+
+/* THE END OF THE IMPORTANT STUFF */
+
+/* Basic Styling */
+
+h1 {
+  text-align: center;
+  font-size: 2.4em;
+  color: #000000;
+}
+.container {
+  display: block;
+  text-align: center;
+}
+h3 {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  font-size: 1.5em;
+  color: #000000;
+}
+h3:before {
+  content: "\25C0";
+  position: absolute;
+  left: -50px;
+  -webkit-animation: leftRight 2s linear infinite;
+  animation: leftRight 2s linear infinite;
+}
+h3:after {
+  content: "\25b6";
+  position: absolute;
+  right: -50px;
+  -webkit-animation: leftRight 2s linear infinite reverse;
+  animation: leftRight 2s linear infinite reverse;
+}
+@-webkit-keyframes leftRight {
+  0%    { -webkit-transform: translateX(0)}
+  25%   { -webkit-transform: translateX(-10px)}
+  75%   { -webkit-transform: translateX(10px)}
+  100%  { -webkit-transform: translateX(0)}
+}
+@keyframes leftRight {
+  0%    { transform: translateX(0)}
+  25%   { transform: translateX(-10px)}
+  75%   { transform: translateX(10px)}
+  100%  { transform: translateX(0)}
+}
