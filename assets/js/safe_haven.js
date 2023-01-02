@@ -1,5 +1,5 @@
 function loadItems() {
-  return fetch("https://www.kospi-fear-greed-index.co.kr/assets/js/json/safe_spread.json") // change
+  return fetch("https://immanuelk1m.github.io/kospi-feargreedindex/assets/js/json/safe_spread.json") // change
     .then((response) => response.json())
     .then((json) => json);
 }
