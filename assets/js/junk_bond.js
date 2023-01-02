@@ -1,5 +1,5 @@
 function loadItems() {
-  return fetch("https://www.kospi-fear-greed-index.co.kr/assets/js/json/junk_spread.json") // change
+  return fetch("./assets/js/json/junk_spread.json") // change
     .then((response) => response.json())
     .then((json) => json);
 }
