@@ -1,5 +1,5 @@
 function loadItems() {
-  return fetch("https://immanuelk1m.github.io/kospi-feargreedindex/assets/js/json/vix_close.json") // change
+  return fetch("https://kospi-fear-greed-index.co.kr/assets/js/json/vix_close.json") // change
     .then((response) => response.json())
     .then((json) => json);
 }
