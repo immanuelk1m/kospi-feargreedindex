@@ -1,5 +1,5 @@
 function loadItems() {
-  return fetch("https://immanuelk1m.github.io/kospi-feargreedindex/sector/output.json") // change
+  return fetch("https://kospi-fear-greed-index.co.kr/sector/output.json") // change
     .then((response) => response.json())
     .then((json) => json);
 }
