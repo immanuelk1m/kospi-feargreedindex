@@ -99,6 +99,25 @@
 									</div>
 									
 								</article>
+								<article>
+									<div class="sec7-text-box" style = "text-align: center;">
+										<p class="font18" style="text-align: center;">마지막 업데이트 : <span class="today"></span></p>
+										<p class="font18">매일 오전/오후 8시마다 업데이트 됩니다</p>
+
+										<p class="font15 time-title"></p>
+										<div class="time font40">
+										  <span class="hours"></span>
+										  <span class="col">시</span>
+										  <span class="minutes"></span>
+										  <span class="col">분</span>
+										  <span class="seconds"></span>
+										  <span class="col">초</span>
+										</div>
+
+
+
+								    	</div>
+								</article>
 
 								<article class="versus">
 									<header>
@@ -172,6 +191,74 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			
+			<script>
+			    var today = new Date();
+			    var yesterday = new Date(today.setDate(today.getDate() -1));
+
+			    var yes_y = yesterday.getFullYear();
+			    var yes_m = yesterday.getMonth() +1 ;
+			    var yes_d = yesterday.getDate();
+
+
+
+			    $(".today").html(yes_y + ' / '+ yes_m + ' / '+ yes_d  + ' /  20:00') ;
+
+			</script>
+
+
+
+			<script>
+			    function remaindTime() {
+			    var now = new Date();
+			    var end = new Date(now.getFullYear(),now.getMonth(),now.getDate(),20,00,00);
+			    var open = new Date(now.getFullYear(),now.getMonth(),now.getDate(),08,00,00);
+
+			    var nt = now.getTime();
+			    var ot = open.getTime();
+			    var et = end.getTime();
+
+			   if(nt<ot){
+			     $(".time").fadeIn();
+			     $("p.time-title").html("내일 업데이트까지 남은 시간");
+			     sec =parseInt(ot - nt) / 1000;
+			     day  = parseInt(sec/60/60/24);
+			     sec = (sec - (day * 60 * 60 * 24));
+			     hour = parseInt(sec/60/60);
+			     sec = (sec - (hour*60*60));
+			     min = parseInt(sec/60);
+			     sec = parseInt(sec-(min*60));
+			     if(hour<10){hour="0"+hour;}
+			     if(min<10){min="0"+min;}
+			     if(sec<10){sec="0"+sec;}
+			      $(".hours").html(hour);
+			      $(".minutes").html(min);
+			      $(".seconds").html(sec);
+			   } else if(nt>et){
+			    $("p.time-title").html("업데이트 완료!");
+			    $(".time").fadeOut();
+			   }else {
+			       $(".time").fadeIn();
+			     $("p.time-title").html("오늘 업데이트 까지 남은 시간");
+			     sec =parseInt(et - nt) / 1000;
+			     day  = parseInt(sec/60/60/24);
+			     sec = (sec - (day * 60 * 60 * 24));
+			     hour = parseInt(sec/60/60);
+			     sec = (sec - (hour*60*60));
+			     min = parseInt(sec/60);
+			     sec = parseInt(sec-(min*60));
+			     if(hour<10){hour="0"+hour;}
+			     if(min<10){min="0"+min;}
+			     if(sec<10){sec="0"+sec;}
+			      $(".hours").html(hour);
+			      $(".minutes").html(min);
+			      $(".seconds").html(sec);
+			   }
+			 }
+			 setInterval(remaindTime,1000);
+
+
+			</script>
 
 	</body>
 </html>
