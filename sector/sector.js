@@ -15,7 +15,7 @@ function sort_object(obj)
     return(sorted_obj)
 }    
 function loadItems() {
-return fetch("https://immanuelk1m.github.io/kospi-feargreedindex/sector/output.json") 
+return fetch("https://kospi-fear-greed-index.co.kr/sector/output.json") 
 .then((response) => response.json())
 .then((json) => json);
 }
