@@ -1,5 +1,5 @@
 function loadItems() {
-  return fetch("https://immanuelk1m.github.io/kospi-feargreedindex/assets/js/json/p_c_ema.json") // change
+  return fetch("https://kospi-fear-greed-index.co.kr/assets/js/json/p_c_ema.json") // change
     .then((response) => response.json())
     .then((json) => json);
 }
