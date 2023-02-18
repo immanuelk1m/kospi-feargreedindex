@@ -24,6 +24,7 @@ loadItems().then((items) => {
     var dataFirst = {
         label: "Put/Call Ratio", // change
         data: ydata,
+        borderWidth : 2,
         lineTension: 0,
         fill: false,
         borderColor: 'rgba(77,20,140)',
