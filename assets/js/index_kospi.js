@@ -30,7 +30,7 @@ loadItems().then((items) => {
         lineTension: 0,
         fill: false,
         borderColor: 'rgba(77,20,140)',
-        pointRadius: 2,
+        pointRadius: 0,
     };
 
     var dataSecond = {
@@ -40,7 +40,7 @@ loadItems().then((items) => {
         lineTension: 0,
         fill: false,
         borderColor: 'rgba(255,102,0)',
-        pointRadius: 2,
+        pointRadius: 0,
     };
 
     var speedData = {
