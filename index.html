@@ -1,291 +1,312 @@
-<!DOCTYPE HTML>
-<!--
-	Strongly Typed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-
-	<head>
-		<title>코스피 공포 & 탐욕 지수</title>
-		
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="google-site-verification" content="Q71lYY4SsS-c-Fs4J6gddXcpCRPJJFmlji5OkIhs9eU" />
-		<meta property="description" content="한국 증시의 투자 심리를 반영한 코스피 공포와 탐욕 지수">
-		<meta property="og:title" content="코스피 공포 & 탐욕 지수">
-		<meta property="og:url" content="https://www.kospi-fear-greed-index.co.kr/">
-		<meta property="og:image" content="./images/sm.png">
-		<meta property="og:description" content="한국 증시의 투자 심리를 반영한 코스피 공포와 탐욕 지수">
-		<meta name="naver-site-verification" content="d617e2e374185b73287a58c9f191216f4b6500b2" />
-
-		<link rel="stylesheet" href="assets/css/main.css" />
-
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-NFSSDKHMW7"></script>
-		<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
-		<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
-		<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7656508177587264"crossorigin="anonymous"></script>
-	
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'G-NFSSDKHMW7');
-		</script>
-
-	</head>
-	
-	<body class="no-sidebar is-preload">
-		<div id="page-wrapper">
-
-			<!-- Header -->
-				<section id="header">
-					<div class="container">
-
-						<!-- Logo -->
-							<h1 id="logo"><a href="./">코스피 공포와 탐욕 지수</a></h1>
-							<p>국내 주식시장을 움직이는 요소들을 분석하고 하나의 숫자로 나타낸 코스피 공포와 탐욕지수</p>
-
-						<!-- Nav -->
-							<nav id="nav">
-								<ul>
-									<li><a class="icon solid fa-cog" href="./"><span>공포와 탐욕 지수</span></a></li>
-									<li><a class="icon solid fa-retweet" href="./factors"><span>공포와 탐욕지수 팩터 분석</span></a></li>
-									<li><a class="icon solid fa-sitemap" href="./sector"><span>코스피 업종 별 추이</span></a></li>
-								</ul>
-							</nav>
-
-					</div>
-				</section>
-
-			<!-- Main -->
-				<section id="main" style="margin: 0 auto; width : 80%">
-					<div class="container">
-						<div id="content">
-
-							<!-- Post -->
-								<article class="box post">
-									<header>
-										<h2><strong>공포 📉  탐욕 📈 지수</strong></h2>
-									</header>
-
-									<!-- Gauge Chart -->
-									<script src="chart.js"></script>
-									<style>
-										.chartout {
-											height: 320px;
-											width: 100%;
-											text-align: center;
-										}
-										.chartdiv {
-											height:100%; 
-											width:100%;
-											display: inline-block;
-										}
-									</style>
-									<div class = chartout style="background-color: #FFFFFF">
-										<div class=chartdiv></div>
-									</div>
-									
-									<div class = chart_description style="background-color: #FFFFFF;">
-										<div class = chart_des_in style="font-size: 0.85em;">
-											<h5>코스피 공포와 탐욕 지수는 'CNN Fear & Greed Index' 를 벤치마킹하여 제작한 지수입니다. 
-												모멘텀, 주가 성장 비율, VIX, 풋옵션 콜옵션 비율, 안전자산수요, 회사채 수요 총 6개의 팩터를 활용해
-												한국 시장의 특성에 맞게 재해석하였습니다. 코스피 공포와 탐욕 지수가 높으면 시장이 탐욕 구간, 
-												낮으면 시장이 공포 구간으로 판단합니다.
-											</h5>
-										</div>
-									</div>
-									
-								</article>
-								<article>
-									<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7656508177587264"crossorigin="anonymous"></script>
-										<!-- 중간 삽입 -->
-										<ins class="adsbygoogle"
-										     style="display:block"
-										     data-ad-client="ca-pub-7656508177587264"
-										     data-ad-slot="1049845872"
-										     data-ad-format="auto"
-										     data-full-width-responsive="true"></ins>
-										<script>
-										     (adsbygoogle = window.adsbygoogle || []).push({});
-										</script>
-								</article>
-								<article>
-									<div class="sec7-text-box" style = "text-align: center;">
-										<p class="font18" style="text-align: center;">마지막 업데이트 : <span class="today"></span></p>
-										<p class="font18">매일 오전/오후 8시마다 업데이트 됩니다</p>
-
-										<p class="font15 time-title"></p>
-										<div class="time font40">
-										  <span class="hours"></span>
-										  <span class="col">시</span>
-										  <span class="minutes"></span>
-										  <span class="col">분</span>
-										  <span class="seconds"></span>
-										  <span class="col">초</span>
-										</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link rel="apple-touch-icon" sizes="76x76" href="./assets/img/favicon.ico">
+<link rel="icon" type="image/png" href="./assets/img/favicon.ico">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<title>코스피 공포 탐욕 지수</title>
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'/>
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Source+Sans+Pro:400,600,700" rel="stylesheet">
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<!-- Main CSS -->
+<link href="./assets/css/main.css" rel="stylesheet"/>
 
 
+<!--JS-->
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7656508177587264"
+     crossorigin="anonymous"></script>
+	 
+</head>
 
-								    	</div>
-								</article>
-								
-								<article>
-									<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7656508177587264"crossorigin="anonymous"></script>
-										<!-- 중간 삽입 -->
-										<ins class="adsbygoogle"
-										     style="display:block"
-										     data-ad-client="ca-pub-7656508177587264"
-										     data-ad-slot="1049845872"
-										     data-ad-format="auto"
-										     data-full-width-responsive="true"></ins>
-										<script>
-										     (adsbygoogle = window.adsbygoogle || []).push({});
-										</script>
-								</article>
+<body>
 
-								<article class="versus">
-									<header>
-										<h2><strong>공포와 탐욕지수 VS 코스피 지수 비교</strong></h2>
-									</header>
-
-									<div id=linechart style="background-color: #FFFFFF">
-
-										
-										<canvas id="index_line" style="height:30vh; width:94%"></canvas>
-										<script src="./assets/js/index_kospi.js"></script>
-									</div>
-									<div class = line_description style="background-color: #FFFFFF;">
-										<div class = line_des_in style = "font-size: 0.85em;">
-										<h5>
-											<br><br>
-											공포와 탐욕지수는 투자자 심리 상태를 살펴볼 수 있는 지표로 활용됩니다.
-											낙관론이 만연하여 주식 시장의 탐욕심리가 넘쳐날 경우 지수가 100에 가까워져 탐욕이 극대화 됩니다.
-											시장의 거품이 무너질 확률이 크므로, 이때는 주식을 팔아야 하는 시기입니다. 
-											이와는 반대로 비관론이 만연하여 주식 시장의 공포심리가 넘쳐날 경우 지수가 0에 가까워져 공포가 극대화됩니다. 
-											주식 시장이 바닥 근처에 도달했을 확률이 크므로, 이때는 주식을 사야 할 시기입니다. 
-											공포와 탐욕지수는 시장의 변화를 알 수 있는 지표로 투자를 결정하는 데 사용할 수 있습니다.
-
-										</h5>
-										</div>
-									</div>
-
-
-								</article>
-
-						</div>
-					</div>
-				</section>
-
-			<!-- Footer -->
-				<section id="footer">
-					<div class="container">
-						
-								<section>
-									<h6 style="font-size: 0.7em; width: 60%; position: absolute; top:10%; right:20%;">
-									코스피 공포 탐욕지수는 투자의 참고 사항일 뿐 어떠한 조언을 하고 있지
-									않음을 알려드립니다. 어떠한 주식을 매수 매도 추천하는 것이 아니며 투자의 책임은 본인에게 있습니다.
-
-									</h6>
-								</section>
-							
-					</div>
-					<div id="copyright" class="container">
-						<ul class="links">
-							<li>&copy; Sp-ready</li><li class="icon brands fa-dribbble"><a href="https://gold-goose.tistory.com/" target='_blank'>gold-goose.tistory.com</a></li>
-						</ul>
-					</div>
-				</section>
-
-		</div>
-
-			<!-- Scripts -->
-			<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
-
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-			<script src="https://cdn.jsdelivr.net/npm/chart.js@^3"></script>
-			<script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
-			<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+<nav class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+<div class="container">
+	<a class="navbar-brand" href="./index.html"><strong>코스피 공포 탐욕 지수</strong></a>
+	<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+	<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="navbar-collapse collapse" id="navbarColor02" style="">
+		<ul class="navbar-nav mr-auto d-flex align-items-center">
+			<li class="nav-item">
+			<a class="nav-link" href="./index.html">Main <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link" href="./article.html">Factors</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link" href="./article.html">Sectors</a>
+			</li>
 			
-			<script>
-			    var today = new Date();
-			    var yesterday = new Date(today.setDate(today.getDate() -1));
+		</ul>
+		<!-- 변하는 버튼
+		<ul class="navbar-nav ml-auto d-flex align-items-center">
+			<li class="nav-item highlight">
+			<a class="nav-link" href="https://www.wowthemes.net/mundana-free-html-bootstrap-template/">변하는 버튼</a>
+			</li>
+		</ul>-->
+	</div>
+</div>
+</nav>
+<!-- End Navbar -->
 
-			    var yes_y = yesterday.getFullYear();
-			    var yes_m = yesterday.getMonth() +1 ;
-			    var yes_d = yesterday.getDate();
+    
+<div class="container">
+	<div class="jumbotron jumbotron-fluid mb-3 pt-0 pb-0 bg-lightblue position-relative">
+		<div class="pl-4 pr-0 h-100 tofront">
+			<div class="row justify-content-between">
+				<div class="col-md-6 pt-6 pb-6 align-self-center">
+					<h1 class="secondfont mb-3 font-weight-bold">코스피 공포 탐욕 지수</h1>
+					<p class="mb-3">
+						한국 시장의 코스피 공포와 탐욕 지수는 CNN FEAR & GREED INDEX를 참고해 만들었습니다 <br> 모멘텀, 주가 성장 비율, VIX, 풋옵션 콜옵션 비율, 안전 자산 수요, 회사채 수요 6가지 팩터를 고려해 코스피 시장의 흐름을 파악합니다 <br> 공포와 탐욕 지수가 높을수록 시장이 위험 구간에 있음을 나타내며, 그 반대로 낮을수록 안정적인 구간에 있다고 볼 수 있습니다
+					</p>
+				</div>
+				<div class="col-md-6 d-none d-md-block pr-0" style="background-size:cover;background-image:url(./assets/img/demo/home.jpg);">	</div>
+			</div>
+		</div>
+	</div>
+</div>
+    
+<div class="container pt-4 pb-4">
+	<div class="row">
+		<!-- Gauge chart -->
+		<div class="col-lg-6">
+			<script src="https://kospi-fear-greed-index.co.kr/chart.js"></script>
+				<style>
+					.chartout {
+						height: 320px;
+						width: 100%;
+						text-align: center;
+					}
+					.chartdiv {
+						height:100%; 
+						width:100%;
+						display: inline-block;
+					}
+				</style>
+				<div class = chartout >
+					<div class=chartdiv></div>
+				</div>
+		</div>
+		<!-- 과거 데이터 -->
+		<div class="col-lg-6">
+			<div class="sec7-text-box" style = "text-align: center;  margin-top: 80px;">
+				<p class="font18" style="text-align: center;">마지막 업데이트 : <span class="today"></span></p>
+				<p class="font18">매일 오전/오후 8시마다 업데이트 됩니다</p>
+
+				<p class="font15 time-title"></p>
+				<div class="time font40">
+				  <span class="hours"></span>
+				  <span class="col">시</span>
+				  <span class="minutes"></span>
+				  <span class="col">분</span>
+				  <span class="seconds"></span>
+				  <span class="col">초</span>
+				</div>
 
 
 
-			    $(".today").html(yes_y + ' / '+ yes_m + ' / '+ yes_d  + ' /  20:00') ;
+				</div>
+		</div>
+	</div>
+</div>
+    
+<div class="container">
+	<div class="row justify-content-between">
+		<div class="col-md-4 pl-4">
+            <h5 class="font-weight-bold spanborder"><span>History</span></h5>
+			
+				<div class="precontain">
+					<p id="w_c">지난 주</p>
+					<p id="w"></p>
+					<p id="w_s"></p>
+				</div>
+				
+				<div class="precontain">
+					<p id="m_c">지난 달</p>
+					<p id="m"></p>
+					<p id="m_s"></p>
+				</div>
 
-			</script>
+				<div class="precontain">
+					<p id="y_c">지난 해</p>
+					<p id="y"></p>
+					<p id="y_s"></p>
+				</div>
+			
+		</div>
+		
+		<div class="col-md-8">
+			<h5 class="font-weight-bold spanborder"><span>Index vs KOSPI</span></h5>
+														
+			<canvas id="index_line" style="height:30vh; width:90%"></canvas>
+						
+			
+		</div>
+		
+	</div>
+</div>
+    
+<!--------------------------------------
+FOOTER
+--------------------------------------->
+<div class="container mt-5">
+	<footer class="bg-white border-top p-3 text-muted small">
+	<div class="row align-items-center justify-content-between">
+		<div>
+            <span class="navbar-brand mr-2"><strong>KGF Index</strong></span> Copyright &copy;
+			<script>document.write(new Date().getFullYear())</script>
+			 . All rights reserved.
+		</div>
+	</div>
+	</footer>
+</div>
+<!-- End Footer -->
+    
+<!--------------------------------------
+JAVASCRIPTS
+--------------------------------------->
+<script src="./assets/js/vendor/jquery.min.js" type="text/javascript"></script>
+<script src="./assets/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="./assets/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="./assets/js/functions.js" type="text/javascript"></script>
 
 
 
-			<script>
-			    function remaindTime() {
-			    var now = new Date();
-			    var end = new Date(now.getFullYear(),now.getMonth(),now.getDate(),20,00,00);
-			    var open = new Date(now.getFullYear(),now.getMonth(),now.getDate(),08,00,00);
 
-			    var nt = now.getTime();
-			    var ot = open.getTime();
-			    var et = end.getTime();
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
 
-			   if(nt<ot){
-			     $(".time").fadeIn();
-			     $("p.time-title").html("내일 업데이트까지 남은 시간");
-			     sec =parseInt(ot - nt) / 1000;
-			     day  = parseInt(sec/60/60/24);
-			     sec = (sec - (day * 60 * 60 * 24));
-			     hour = parseInt(sec/60/60);
-			     sec = (sec - (hour*60*60));
-			     min = parseInt(sec/60);
-			     sec = parseInt(sec-(min*60));
-			     if(hour<10){hour="0"+hour;}
-			     if(min<10){min="0"+min;}
-			     if(sec<10){sec="0"+sec;}
-			      $(".hours").html(hour);
-			      $(".minutes").html(min);
-			      $(".seconds").html(sec);
-			   } else if(nt>et){
-			    $("p.time-title").html("업데이트 완료!");
-			    $(".time").fadeOut();
-			   }else {
-			       $(".time").fadeIn();
-			     $("p.time-title").html("오늘 업데이트 까지 남은 시간");
-			     sec =parseInt(et - nt) / 1000;
-			     day  = parseInt(sec/60/60/24);
-			     sec = (sec - (day * 60 * 60 * 24));
-			     hour = parseInt(sec/60/60);
-			     sec = (sec - (hour*60*60));
-			     min = parseInt(sec/60);
-			     sec = parseInt(sec-(min*60));
-			     if(hour<10){hour="0"+hour;}
-			     if(min<10){min="0"+min;}
-			     if(sec<10){sec="0"+sec;}
-			      $(".hours").html(hour);
-			      $(".minutes").html(min);
-			      $(".seconds").html(sec);
-			   }
-			 }
-			 setInterval(remaindTime,1000);
+<script src="https://kospi-fear-greed-index.co.kr/assets/js/index_kospi.js"></script>
 
 
-			</script>
 
-	</body>
+<script>
+	var today = new Date();
+	var yesterday = new Date(today.setDate(today.getDate() -1));
+
+	var yes_y = yesterday.getFullYear();
+	var yes_m = yesterday.getMonth() +1 ;
+	var yes_d = yesterday.getDate();
+
+
+
+	$(".today").html(yes_y + ' / '+ yes_m + ' / '+ yes_d  + ' /  20:00') ;
+
+</script>
+<script>
+	function remaindTime() {
+	var now = new Date();
+	var end = new Date(now.getFullYear(),now.getMonth(),now.getDate(),20,00,00);
+	var open = new Date(now.getFullYear(),now.getMonth(),now.getDate(),08,00,00);
+
+	var nt = now.getTime();
+	var ot = open.getTime();
+	var et = end.getTime();
+
+   if(nt<ot){
+	 $(".time").fadeIn();
+	 $("p.time-title").html("내일 업데이트까지 남은 시간");
+	 sec =parseInt(ot - nt) / 1000;
+	 day  = parseInt(sec/60/60/24);
+	 sec = (sec - (day * 60 * 60 * 24));
+	 hour = parseInt(sec/60/60);
+	 sec = (sec - (hour*60*60));
+	 min = parseInt(sec/60);
+	 sec = parseInt(sec-(min*60));
+	 if(hour<10){hour="0"+hour;}
+	 if(min<10){min="0"+min;}
+	 if(sec<10){sec="0"+sec;}
+	  $(".hours").html(hour);
+	  $(".minutes").html(min);
+	  $(".seconds").html(sec);
+   } else if(nt>et){
+	$("p.time-title").html("업데이트 완료!");
+	$(".time").fadeOut();
+   }else {
+	   $(".time").fadeIn();
+	 $("p.time-title").html("오늘 업데이트 까지 남은 시간");
+	 sec =parseInt(et - nt) / 1000;
+	 day  = parseInt(sec/60/60/24);
+	 sec = (sec - (day * 60 * 60 * 24));
+	 hour = parseInt(sec/60/60);
+	 sec = (sec - (hour*60*60));
+	 min = parseInt(sec/60);
+	 sec = parseInt(sec-(min*60));
+	 if(hour<10){hour="0"+hour;}
+	 if(min<10){min="0"+min;}
+	 if(sec<10){sec="0"+sec;}
+	  $(".hours").html(hour);
+	  $(".minutes").html(min);
+	  $(".seconds").html(sec);
+   }
+ }
+ setInterval(remaindTime,1000);
+
+
+</script>
+
+
+<script>
+
+	let xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+		let myObj = JSON.parse(this.responseText);
+		
+		document.getElementById("w").innerHTML = myObj.week;
+		document.getElementById("w_s").innerHTML = myObj.week_s;
+
+		document.getElementById("m").innerHTML = myObj.month;
+		document.getElementById("m_s").innerHTML = myObj.month_s;
+
+		document.getElementById("y").innerHTML = myObj.year;
+		document.getElementById("y_s").innerHTML = myObj.year_s;
+
+
+		function changeColor(box , value) {
+			if (value >= 80) {
+				box.style.backgroundColor = '#0f9747';
+			} 
+			else if (value >= 60) {
+				box.style.backgroundColor = '#b0d136';
+			}
+			else if (value >= 40) {
+				box.style.backgroundColor = '#f3eb0c';
+			}
+			else if (value >= 20) {
+				box.style.backgroundColor = '#fdae19';
+			} 
+			else {
+				box.style.backgroundColor = '#ee1f25';
+			}
+		}
+		const box1 = document.querySelector('#w_s');
+		const box2 = document.querySelector('#m_s');
+		const box3 = document.querySelector('#y_s');
+
+		var box_list = [box1,box2,box3];
+		var var_list = [myObj.week,myObj.month,myObj.year];
+		for (let i = 0; i < 3; i++) {
+		changeColor(box_list[i], var_list[i]);
+		}
+
+	  }
+	};
+	xhr.open("GET", "https://kospi-fear-greed-index.co.kr/assets/js/json/value.json", true);
+	xhr.send();
+	
+	
+	
+</script>
+
+</body>
 </html>
