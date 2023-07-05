@@ -49,7 +49,7 @@ loadItems().then((items) => {
     };
 
     var chartOptions = {
-        responsive: false,
+        responsive: true,
         legend: {
             display: true,
             position: 'top',
