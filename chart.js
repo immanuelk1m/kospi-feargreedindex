@@ -189,7 +189,7 @@ hand.events.on("positionchanged", function(){
     
 var current_value;
     
-fetch("https://kospi-fear-greed-index.co.kr/assets/js/json/value.json")
+fetch("https://immanuelk1m.github.io/kospi-feargreedindex/assets/js/json/value.json")
   .then(response => response.json())
   .then(json => current_value = json.current);
 
