@@ -1,8 +1,8 @@
 {
-    "ema_spread_scaled": 0.6257213670024198,
-    "mcclenllan_scaled": 0.42984451194161993,
-    "p_c_ema_scaled": 0.48821548821548794,
-    "vix_ema_spread_scaled": 0.7897609959624798,
-    "safe_spread_scaled": 0.5886617371233147,
-    "junk_spread_scaled": 0.8864353312302838
+    "ema_spread_scaled": 0.7346080585131216,
+    "mcclenllan_scaled": 0.36152563180779945,
+    "p_c_ema_scaled": 0.5656565656565653,
+    "vix_ema_spread_scaled": 0.8673009882427903,
+    "safe_spread_scaled": 0.6324561289919312,
+    "junk_spread_scaled": 0.9242902208201892
 }
