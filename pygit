@@ -1,4 +1,0 @@
-pip install PyGithub
-
-from github import Github
-g = Github("immanuelk1m", "@tjddms54")

@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://www.kospi-fear-greed-index.co.kr/rss.xml
