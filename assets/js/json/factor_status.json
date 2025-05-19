@@ -1,9 +1,9 @@
 {
-    "ema_spread_scaled": 0.7642562154989341,
-    "mcclenllan_scaled": 0.5584040126598974,
-    "p_c_ema_scaled": 0.7526881720430105,
-    "vix_ema_spread_scaled": 0.8835858570387026,
-    "safe_spread_scaled": 0.6086648123062152,
-    "junk_spread_scaled": 0.7218045112781951,
-    "stock_strength_scaled": 0.8425577751724943
+    "ema_spread_scaled": 0.7868933230416202,
+    "mcclenllan_scaled": 0.7856606067945531,
+    "p_c_ema_scaled": 0.8781362007168457,
+    "vix_ema_spread_scaled": 0.9853540603356652,
+    "safe_spread_scaled": 0.7343156852234397,
+    "junk_spread_scaled": 0.23300970873786303,
+    "stock_strength_scaled": 0.7349884879480021
 }
