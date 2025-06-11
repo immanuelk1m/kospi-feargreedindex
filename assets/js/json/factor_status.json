@@ -1,9 +1,9 @@
 {
     "ema_spread_scaled": 1.0,
-    "mcclenllan_scaled": 0.556527603379795,
+    "mcclenllan_scaled": 0.6157391467120786,
     "p_c_ema_scaled": 0.9843260188087776,
-    "vix_ema_spread_scaled": 0.8035528667032619,
-    "safe_spread_scaled": 0.9181300566361723,
+    "vix_ema_spread_scaled": 0.851204727812102,
+    "safe_spread_scaled": 0.9201610037859982,
     "junk_spread_scaled": 0.466019417475728,
-    "stock_strength_scaled": 0.8710470275898946
+    "stock_strength_scaled": 0.9004287175061211
 }
