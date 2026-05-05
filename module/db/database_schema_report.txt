@@ -1,0 +1,6033 @@
+Database: kgf_data.db
+---------------------
+Table: kgf_index
+  - date: TEXT
+  - ema_spread_scaled: REAL
+  - mcclenllan_scaled: REAL
+  - p_c_ema_scaled: REAL
+  - vix_ema_spread_scaled: REAL
+  - safe_spread_scaled: REAL
+  - junk_spread_scaled: REAL
+  - index_value: REAL
+  - kospi_close: REAL
+  - stock_strength_scaled: REAL
+
+Table: vix
+  - date: TIMESTAMP
+  - vix_close: REAL
+  - vix_ema: REAL
+  - vix_ema_spread: REAL
+
+Table: ten_bond
+  - date: TIMESTAMP
+  - ten_ratio: REAL
+  - bond_ema: REAL
+
+Table: junk_bond
+  - date: TIMESTAMP
+  - aam: REAL
+  - bbbp: REAL
+  - junk_spread: REAL
+
+Table: pcr
+  - date: TIMESTAMP
+  - put: TEXT
+  - cal: TEXT
+  - p_c_ratio: REAL
+  - p_c_ema: DECIMAL(18, 6)
+
+Table: kospi
+  - date: TIMESTAMP
+  - 시가: REAL
+  - 고가: REAL
+  - 저가: REAL
+  - 종가: REAL
+  - 거래량: INTEGER
+  - 거래대금: INTEGER
+  - 상장시가총액: INTEGER
+  - ema: REAL
+  - ema_spread: REAL
+  - bf_20: REAL
+  - return_20: REAL
+
+Table: breadth
+  - date: TEXT
+  - adv_value: INTEGER
+  - dec_value: INTEGER
+  - diff: INTEGER
+  - ema19: REAL
+  - ema39: REAL
+  - oscillator: REAL
+  - summation_index: REAL
+  - short: REAL
+  - long: REAL
+  - mcclenllan: REAL
+
+Table: stock_strength
+  - date: TEXT
+  - high_count: INTEGER
+  - low_count: INTEGER
+  - total_count: INTEGER
+  - strength_ratio: REAL
+  - strength_index: REAL
+
+---------------------
+
+
+Database: stock_data.db
+-----------------------
+Table: stock_095570
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006840
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_027410
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_282330
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_138930
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001460
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001465
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001040
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_079160
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_00104K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000120
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011150
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011155
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001045
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_097950
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_097955
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000590
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_012030
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_016610
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005830
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000990
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_139130
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001530
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000210
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001880
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000215
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_375500
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_37550L
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_37550K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007340
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004840
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_155660
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_069730
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_017940
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_365550
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_383220
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007700
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_114090
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_078930
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006360
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001250
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007070
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_078935
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_012630
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_039570
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_089470
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_294870
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009540
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_267250
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_267270
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_322000
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_042670
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_267260
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_329180
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_097230
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_014790
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003580
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_204320
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_060980
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011200
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_082740
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_035000
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003560
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_175330
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_234080
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001060
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001067
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001065
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_096760
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_105560
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_432320
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002380
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_344820
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009070
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009440
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_119650
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_092220
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003620
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_016380
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001390
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_033180
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001940
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_025000
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_092230
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000040
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_044450
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_030200
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_033780
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_058850
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_058860
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_093050
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003550
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_034220
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_051900
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_051905
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_373220
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003555
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_032640
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011070
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_066570
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_066575
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_037560
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_051910
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_051915
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_079550
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006260
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010120
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000680
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_229640
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_108320
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001120
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_108670
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_108675
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_383800
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_38380K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_023150
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_035420
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_181710
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_400760
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005940
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005945
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_338100
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_034310
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008260
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004250
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004255
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_456040
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010060
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_178920
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005490
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010950
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010955
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_034120
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005090
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001380
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004060
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001770
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002360
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009160
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_123700
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_025530
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_034730
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011790
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_018670
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001740
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006120
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006125
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_210980
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_068400
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_395400
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_302440
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_326030
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_402340
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_361610
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_100090
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_03473K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_096770
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_096775
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001510
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001515
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_285130
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_28513K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_017670
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000660
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003570
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_064960
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_100840
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_036530
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005610
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011810
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_077970
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_071970
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002820
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_084870
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002710
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_069260
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002900
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_024070
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_037270
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000500
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000860
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_035250
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011420
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002100
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009450
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_267290
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_012320
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000050
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_214390
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_012610
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009140
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_013580
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_012200
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_012205
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002140
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010130
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002240
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009290
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_017040
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_017900
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_037710
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_030610
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_339770
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007690
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005320
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001140
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002720
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_083420
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_014530
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_014280
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_014285
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008870
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001570
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002990
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002995
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011780
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011785
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_214330
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001210
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_073240
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_092440
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000270
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_024110
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_013700
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004540
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004545
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001260
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008350
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008355
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004270
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003920
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003925
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_025860
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005720
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005725
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002350
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002355
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_251270
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_090350
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_090355
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000320
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000325
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006280
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005250
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005257
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004370
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_072710
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_058730
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_030210
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_023590
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_145210
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_019680
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_019685
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006370
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008060
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_00806K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_353200
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_35320K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000490
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008110
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005750
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006570
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001680
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001685
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_084690
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_084695
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_128820
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_117580
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_016710
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003540
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003547
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003545
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009190
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_014160
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_047040
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009320
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003090
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_069620
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000430
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006340
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006345
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003220
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_024890
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002880
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000300
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_012800
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_015230
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001070
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006650
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001440
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_084010
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001790
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001795
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001130
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003490
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003495
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005880
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003830
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_016090
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_069460
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_118000
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_192080
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_012510
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004830
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004835
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_024900
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_145720
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002150
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_460850
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_460860
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001230
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_023450
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004140
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007590
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005960
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005965
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_026960
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002210
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_102260
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000640
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_170900
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_028100
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_282690
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001520
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001527
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_084670
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_082640
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001525
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008970
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_092780
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_049770
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_018500
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006040
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_030720
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_014820
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_014825
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_163560
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004890
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002690
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000020
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000150
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000157
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_241560
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_034020
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000155
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_336260
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_33626K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_33626L
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_016740
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_192650
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_024090
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003160
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_092200
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_377190
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_013570
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_210540
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_115390
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_032350
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_089860
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_330590
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000400
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_023530
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_020150
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_280360
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004000
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_286940
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004990
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_00499K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005300
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005305
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011170
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_071840
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_027740
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_357430
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001080
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_088980
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_094800
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_138040
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_090370
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_017180
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009900
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_012690
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005360
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_204210
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009680
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009580
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009200
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_033920
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008420
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_025560
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007120
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_396690
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_357250
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_085620
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006800
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_00680K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006805
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002840
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_268280
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_107590
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_134380
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003650
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_155900
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_377740
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003610
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001340
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_035150
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002410
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007210
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002760
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003850
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000890
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003000
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001270
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001275
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_026940
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011390
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005030
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002070
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_100220
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_090460
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_030790
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005180
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003960
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008040
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007160
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_014710
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006090
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001470
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_448730
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006400
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006405
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006660
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_028260
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_02826K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_207940
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_032830
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_018260
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_028050
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009150
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009155
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005930
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005935
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001360
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010140
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_016360
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_068290
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_029780
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000810
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000815
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006110
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_145990
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_145995
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003230
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002170
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_272550
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000070
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000075
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003720
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002810
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005680
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_023000
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004380
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002450
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004440
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000520
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009770
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005500
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004690
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010960
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004450
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009470
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011230
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001820
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000390
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001290
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_041650
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_075180
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007540
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_248170
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007860
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_200880
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_017390
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004410
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004415
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_021050
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008490
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007610
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_136490
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_014910
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_014915
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003080
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004980
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004985
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011300
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000180
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002420
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004360
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004365
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004490
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001430
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_306200
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003030
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_019440
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_058650
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_013000
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_091090
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_021820
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_067830
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_033530
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_075580
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_027970
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_068270
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_336370
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_33637K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_33637L
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_248070
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004430
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_126720
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_017550
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_053210
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_026890
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_134790
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_016590
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_029530
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004970
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011930
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005390
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004170
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_035510
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_034300
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_031430
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_031440
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006880
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005800
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001720
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001725
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009270
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002700
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002870
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_019170
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_019175
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_404990
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_293940
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_055550
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004080
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_102280
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003410
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004770
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_015540
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_403550
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004920
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_112610
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_308170
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008700
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002790
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_00279K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002795
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_090430
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_090435
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002030
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_183190
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002310
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_012170
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_267850
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_020560
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_122900
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010780
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_139990
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001780
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_018250
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_161000
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011090
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_137310
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005850
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010580
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_012750
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_023960
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_298690
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_140910
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_078520
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_015260
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007460
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003060
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_244920
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_036570
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_380440
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_085310
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_900140
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_097520
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_014440
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_111770
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009970
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003520
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000670
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006740
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_012280
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_012160
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_015360
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007310
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002630
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_271560
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001800
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011690
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_070960
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_316140
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010050
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006980
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_017370
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_105840
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010400
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_049800
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_016880
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_095720
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005820
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010600
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008600
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_033270
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_014830
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_446070
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000910
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_047400
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011330
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_077500
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002920
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000700
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003470
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003475
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_072130
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000220
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000225
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000227
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001200
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000100
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000105
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003460
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003465
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008730
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008250
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_025820
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_214320
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_088260
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_139480
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_457190
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007660
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005950
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_015020
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_093230
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_074610
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_102460
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_084680
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_350520
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_334890
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000760
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_014990
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_101140
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006490
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_023800
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_034590
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_129260
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_023810
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_249420
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000230
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_013360
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003120
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003200
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007110
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007570
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007575
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008500
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_081000
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_020760
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_103590
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_271940
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_015860
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_226320
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_317400
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_033240
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000950
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_348950
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_194370
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_025620
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_030000
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_271980
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001560
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002620
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006220
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_089590
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004910
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004700
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001550
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000480
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_120030
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_018470
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002600
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_185750
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_063160
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001630
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_044380
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_013890
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_013870
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_071320
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_088790
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003780
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010640
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_100250
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_051630
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_272450
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011000
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002780
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002787
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002785
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009310
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000650
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_012600
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_033250
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_035720
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_323410
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_377300
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006380
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_109070
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001620
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_029460
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_281820
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_381970
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_145270
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_417310
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_357120
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007815
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007810
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_00781K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003690
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_192820
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_044820
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005070
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005420
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_071950
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002020
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003070
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003075
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_450140
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_45014K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002025
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_120110
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_120115
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_138490
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_021240
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_036420
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_031820
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_192400
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_284740
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_015590
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_264900
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_26490K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005740
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005745
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_259960
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_020120
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_039490
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_014580
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_015890
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006890
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003240
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011280
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004100
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004105
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009410
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009415
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001420
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007980
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_055490
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_078000
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_214420
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_019180
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_363280
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_36328K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_091810
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004870
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005690
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_036580
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004720
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_028670
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010820
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_016800
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001020
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_090080
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010770
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_058430
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_047050
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003670
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_017810
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_103140
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005810
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_950210
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009810
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_086790
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_293480
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_039130
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_352820
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_071090
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_019490
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000080
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000087
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000140
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000145
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_152550
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_036460
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005430
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_071050
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_071055
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010040
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_025540
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010100
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004090
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002200
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002960
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000240
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_123890
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_015760
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006200
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_023350
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_025890
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000970
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_104700
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_017960
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_161890
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_024720
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_161390
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_034830
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007280
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_168490
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_047810
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_123690
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003350
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011500
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002390
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_053690
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_042700
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008930
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_128940
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009240
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_020000
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003680
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_105630
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_069640
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_016450
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010420
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009180
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_213500
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_014680
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004710
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004150
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_025750
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004960
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011700
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001750
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001755
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_018880
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009420
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_014130
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_300720
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002220
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006390
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003300
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_051600
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_052690
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_130660
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002320
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003480
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_180640
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_18064K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005110
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009460
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_372910
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000880
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_00088K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_452260
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_45226K
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_451800
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_088350
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000370
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009830
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009835
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_272210
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_012450
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_042660
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000885
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003530
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003535
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_195870
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_101530
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_143210
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000720
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000725
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_453340
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_086280
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_064350
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_079430
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_012330
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010620
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_069960
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004560
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004310
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_017800
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_307950
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011210
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004020
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005440
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005380
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005387
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005389
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005385
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001500
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_011760
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_227840
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_126560
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001450
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_057050
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_093240
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003010
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_111110
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008770
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008775
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002460
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_378850
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_241590
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_006060
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_013520
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010690
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_133820
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010660
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000850
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_016580
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_032560
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004800
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_094280
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_298040
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_298050
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_298020
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_298000
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_093370
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_081660
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005870
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_079980
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_005010
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000540
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000545
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_003280
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_462520
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_030190
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_092790
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_465770
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_454910
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_450080
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_111380
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_017860
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_022100
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_066970
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_278470
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_475150
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_443060
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_034230
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_481850
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_462870
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_062040
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_487570
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_079900
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_489790
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_475560
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_415640
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_484870
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_499790
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_064400
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_031210
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_480370
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000995
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001745
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_008560
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000060
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_096300
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_010145
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_004565
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_000547
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_016385
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_101060
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_001529
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_002270
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_015350
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_009275
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_138250
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_007630
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+Table: stock_153360
+  - date: TEXT
+  - open: INTEGER
+  - close: INTEGER
+  - trading_value: INTEGER
+
+-----------------------
+
+
