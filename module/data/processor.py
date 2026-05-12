@@ -225,7 +225,13 @@ class DataProcessor:
                 kgf_component_dfs.append(adjusted_strength)
                 factor_columns.append('stock_strength')
 
-            kgf_df = pd.concat(kgf_component_dfs, axis=1, join='inner')
+            kgf_df = pd.concat(kgf_component_dfs, axis=1, join='outer').sort_index()
+            # KOSPI 거래일을 지수 산출 기준 달력으로 사용한다. KRX 파생상품 계열처럼
+            # 일부 원천이 짧게 비는 경우에는 최근 관측치를 최대 5거래일까지만
+            # 이월해 휴일/일시 결측으로 생기는 차트 단절을 줄이고, 장기 원천 누락은
+            # 그대로 dropna 검증에 걸리게 둔다.
+            kgf_df = kgf_df.reindex(data_frames['kospi_df'].index)
+            kgf_df[factor_columns] = kgf_df[factor_columns].ffill(limit=5)
             rows_before_dropna = len(kgf_df)
             kgf_df = kgf_df.dropna(subset=factor_columns + ['종가'])
             dropped_rows = rows_before_dropna - len(kgf_df)

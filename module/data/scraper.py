@@ -3,16 +3,22 @@ import numpy as np
 from pykrx import stock
 import requests
 from bs4 import BeautifulSoup
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import sqlite3
 import time
 import logging
+import base64
+import json
+import zlib
 from config.settings import KRX_URL, NICE_RATING_URL, INVESTING_URL, HEADERS, DB_DIR
 from utils.helpers import date_range_f
 from utils.db_utils import get_db_connection, get_table_as_df, get_last_date, upsert_df_to_db
 
 # 로거 가져오기
 logger = logging.getLogger(__name__)
+
+TE_10Y_MARKET_URL = "https://d3ii0wo49og5mi.cloudfront.net/markets/gvsk10yr:gov"
+TE_CHART_DECODE_KEY = b"tradingeconomics-charts-core-api-key"
 
 class DataScraper:
     def __init__(self):
@@ -221,6 +227,26 @@ class DataScraper:
         """10년 국채 데이터를 수집합니다."""
         try:
             logger.info("10년 국채 데이터 수집 시작")
+            te_ranges = self._get_10ybond_update_ranges()
+            te_frames = []
+
+            for start_date, end_date in te_ranges:
+                te_df = self._fetch_tradingeconomics_10ybond_data(start_date, end_date)
+                if not te_df.empty:
+                    te_frames.append(te_df)
+
+            if te_frames:
+                new_tenBond_df = pd.concat(te_frames).sort_index()
+                new_tenBond_df = new_tenBond_df[~new_tenBond_df.index.duplicated(keep='last')]
+                logger.info(f"Trading Economics 10년 국채 데이터 행 수: {len(new_tenBond_df)}")
+                upsert_df_to_db(new_tenBond_df, 'ten_bond')
+                self.tenBond_df = get_table_as_df('ten_bond')
+                logger.info("10년 국채 데이터 수집 및 저장 완료")
+                return
+
+            # Compatibility path: keep the existing Investing HTML parser as a
+            # guarded secondary source when the chart API returns no rows. This
+            # preserves prior behavior without fabricating missing bond values.
             response = requests.get(INVESTING_URL)
             response.raise_for_status()
             
@@ -284,6 +310,84 @@ class DataScraper:
         except Exception as e:
             logger.error(f"10년 국채 데이터 처리 중 오류 발생: {e}")
             raise
+
+    def _get_10ybond_update_ranges(self):
+        """DB의 큰 결측 구간과 최근 45일을 10년물 수집 대상 구간으로 계산합니다."""
+        today = datetime.today().date()
+        ranges = []
+        try:
+            ten_bond_df = get_table_as_df('ten_bond')
+            if ten_bond_df.empty:
+                return [(today - timedelta(days=45), today)]
+
+            dates = pd.to_datetime(ten_bond_df.index).date
+            dates = sorted(set(dates))
+            for prev_date, next_date in zip(dates, dates[1:]):
+                gap_days = (next_date - prev_date).days
+                if gap_days > 10:
+                    ranges.append((prev_date + timedelta(days=1), next_date - timedelta(days=1)))
+
+            last_date = dates[-1]
+            ranges.append((max(last_date - timedelta(days=45), dates[0]), today))
+        except Exception as e:
+            logger.warning(f"10년 국채 수집 구간 계산 중 오류 발생: {e}")
+            ranges.append((today - timedelta(days=45), today))
+
+        normalized_ranges = []
+        for start_date, end_date in ranges:
+            if start_date <= end_date:
+                normalized_ranges.append((start_date, end_date))
+        return normalized_ranges
+
+    def _fetch_tradingeconomics_10ybond_data(self, start_date, end_date):
+        """Trading Economics 차트 API에서 한국 10년물 데이터를 가져옵니다."""
+        params = {
+            "d1": start_date.strftime("%Y-%m-%d"),
+            "d2": end_date.strftime("%Y-%m-%d"),
+            "interval": "1d",
+            "ohlc": "0",
+        }
+        headers = {
+            "User-Agent": HEADERS.get("User-Agent", "Mozilla/5.0"),
+            "Referer": "https://tradingeconomics.com/south-korea/government-bond-yield",
+            "Accept": "application/json,*/*",
+        }
+
+        try:
+            response = requests.get(TE_10Y_MARKET_URL, params=params, headers=headers, timeout=30)
+            response.raise_for_status()
+            decoded = self._decode_tradingeconomics_payload(response.json())
+            data = decoded.get("series", [{}])[0].get("data", [])
+            rows = []
+            for item in data:
+                if len(item) < 2 or item[1] is None:
+                    continue
+                date = datetime.fromtimestamp(int(item[0]), timezone.utc).strftime("%Y-%m-%d 00:00:00")
+                rows.append((date, float(item[1])))
+
+            if not rows:
+                logger.warning(f"Trading Economics 10년 국채 데이터 없음: {params['d1']} ~ {params['d2']}")
+                return pd.DataFrame(columns=["ten_ratio"])
+
+            df = pd.DataFrame(rows, columns=["date", "ten_ratio"])
+            df = df.drop_duplicates(subset=["date"], keep="last").set_index("date")
+            logger.info(f"Trading Economics 10년 국채 수집 성공: {params['d1']} ~ {params['d2']} ({len(df)}행)")
+            return df
+        except Exception as e:
+            logger.error(f"Trading Economics 10년 국채 수집 실패: {params['d1']} ~ {params['d2']} - {e}")
+            return pd.DataFrame(columns=["ten_ratio"])
+
+    def _decode_tradingeconomics_payload(self, payload):
+        """Trading Economics 차트 응답을 JSON으로 복호화합니다."""
+        if not isinstance(payload, str):
+            return payload
+
+        encrypted = bytearray(base64.b64decode(payload))
+        for idx in range(len(encrypted)):
+            encrypted[idx] ^= TE_CHART_DECODE_KEY[idx % len(TE_CHART_DECODE_KEY)]
+
+        decoded = zlib.decompress(bytes(encrypted), zlib.MAX_WBITS | 32).decode("utf-8")
+        return json.loads(decoded)
 
     def scrape_pcr_data(self):
         """PCR 데이터를 수집합니다."""
