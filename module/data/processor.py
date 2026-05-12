@@ -14,6 +14,22 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 # 로거 가져오기
 logger = logging.getLogger(__name__)
 
+KGF_CALCULATION_VERSION = "sma_quantile_no_smoothing_v1"
+FIXED_FACTOR_COLUMNS = [
+    'ema_spread',
+    'mcclenllan',
+    'p_c_ema',
+    'vix_ema_spread',
+    'safe_spread',
+    'junk_spread',
+    'stock_strength'
+]
+ROLLING_QUANTILE_LOW = 0.05
+ROLLING_QUANTILE_HIGH = 0.95
+ROLLING_QUANTILE_MIN_PERIODS = 20
+MAX_FACTOR_FORWARD_FILL_DAYS = 5
+APPLY_INDEX_SMOOTHING = False
+
 class DataProcessor:
     def __init__(self, custom_params=None):
         self.f_kgf_df = None
@@ -28,6 +44,7 @@ class DataProcessor:
         """데이터를 처리하고 지표를 계산합니다."""
         try:
             logger.info("데이터 처리 시작")
+            logger.info(f"KGF 산출 방식: {KGF_CALCULATION_VERSION}")
             
             # kgf_index 테이블 구조 확인 및 업데이트
             self.check_and_update_table_structure()
@@ -71,6 +88,8 @@ class DataProcessor:
 
             # 시장 너비 지표 계산
             logger.info("시장 너비 지표 계산 중")
+            # 사용자가 선택한 SMA 방식: 표준 EMA McClellan이 아니라
+            # 상승/하락 거래대금 차이의 단기/장기 단순이동평균 차이를 사용한다.
             data_frames['breadth_df']['short'] = data_frames['breadth_df']['diff'].rolling(window=self.params['breadth_short_window']).mean()
             data_frames['breadth_df']['long'] = data_frames['breadth_df']['diff'].rolling(window=self.params['breadth_long_window']).mean()
             data_frames['breadth_df']['mcclenllan'] = data_frames['breadth_df']['short'] - data_frames['breadth_df']['long']
@@ -201,14 +220,7 @@ class DataProcessor:
 
             # 최종 지수 산출에 쓰는 factor를 명시적으로 고정한다.
             # 종가(kospi close)는 시각화/저장용 기준값이며 점수 산출 factor가 아니다.
-            factor_columns = [
-                'ema_spread',
-                'mcclenllan',
-                'p_c_ema',
-                'vix_ema_spread',
-                'safe_spread',
-                'junk_spread'
-            ]
+            factor_columns = FIXED_FACTOR_COLUMNS.copy()
             kgf_component_dfs = [
                 data_frames['kospi_df']['ema_spread'].rename('ema_spread'),
                 data_frames['breadth_df']['mcclenllan'].rename('mcclenllan'),
@@ -216,22 +228,27 @@ class DataProcessor:
                 data_frames['vix_df']['vix_ema_spread'].mul(-1).rename('vix_ema_spread'),
                 safe_demand_df['safe_spread'].rename('safe_spread'),
                 data_frames['junkBond_df']['junk_spread'].mul(-1).rename('junk_spread'),
-                data_frames['kospi_df']['종가'].rename('종가')
             ]
 
-            if stock_strength_series is not None:
-                # 0-100 스케일에서 50이 중간값이므로, 50 미만은 공포, 50 초과는 탐욕
-                adjusted_strength = ((stock_strength_series - 50) / 50).rename('stock_strength')
-                kgf_component_dfs.append(adjusted_strength)
-                factor_columns.append('stock_strength')
+            if stock_strength_series is None:
+                raise ValueError("고정 산출 방식에는 stock_strength factor가 필수입니다.")
+
+            # 0-100 스케일에서 50이 중간값이므로, 50 미만은 공포, 50 초과는 탐욕
+            adjusted_strength = ((stock_strength_series - 50) / 50).rename('stock_strength')
+            kgf_component_dfs.append(adjusted_strength)
+            kgf_component_dfs.append(data_frames['kospi_df']['종가'].rename('종가'))
 
             kgf_df = pd.concat(kgf_component_dfs, axis=1, join='outer').sort_index()
             # KOSPI 거래일을 지수 산출 기준 달력으로 사용한다. KRX 파생상품 계열처럼
             # 일부 원천이 짧게 비는 경우에는 최근 관측치를 최대 5거래일까지만
-            # 이월해 휴일/일시 결측으로 생기는 차트 단절을 줄이고, 장기 원천 누락은
-            # 그대로 dropna 검증에 걸리게 둔다.
+            # 이월하되, imputed 플래그를 함께 저장한다. 장기 원천 누락은 그대로
+            # dropna 검증에 걸리게 둔다.
             kgf_df = kgf_df.reindex(data_frames['kospi_df'].index)
-            kgf_df[factor_columns] = kgf_df[factor_columns].ffill(limit=5)
+            imputed_flags = kgf_df[factor_columns].isna()
+            kgf_df[factor_columns] = kgf_df[factor_columns].ffill(limit=MAX_FACTOR_FORWARD_FILL_DAYS)
+            for column in factor_columns:
+                kgf_df[column + '_imputed'] = imputed_flags[column].astype(int)
+            kgf_df['imputed_count'] = kgf_df[[column + '_imputed' for column in factor_columns]].sum(axis=1)
             rows_before_dropna = len(kgf_df)
             kgf_df = kgf_df.dropna(subset=factor_columns + ['종가'])
             dropped_rows = rows_before_dropna - len(kgf_df)
@@ -277,43 +294,46 @@ class DataProcessor:
                 scaled_column = column + '_scaled'
                 scaled_columns.append(scaled_column)
                 working_df[scaled_column] = None
-                rolling_min = working_df[column].rolling(window=self.params['scaling_window'], min_periods=20).min()
-                # NaN이면 전체 데이터의 최소값으로 대체
-                if rolling_min.isna().any():
-                    min_val = working_df[column].min()
-                    rolling_min = rolling_min.fillna(min_val)
-                    logger.info(f"{column} 컬럼의 rolling_min에 NaN이 있어 전체 최소값({min_val:.4f})으로 대체합니다.")
-                rolling_max = working_df[column].rolling(window=self.params['scaling_window'], min_periods=20).max()
-                # NaN이면 전체 데이터의 최대값으로 대체
-                if rolling_max.isna().any():
-                    max_val = working_df[column].max()
-                    rolling_max = rolling_max.fillna(max_val)
-                    logger.info(f"{column} 컬럼의 rolling_max에 NaN이 있어 전체 최대값({max_val:.4f})으로 대체합니다.")
-                try:
-                    # 분모가 0인 경우 체크
-                    denominator = rolling_max - rolling_min
-                    if (denominator == 0).any():
-                        logger.warning(f"{column} 컬럼에서 분모가 0인 경우가 있습니다. 기본값 0.5를 사용합니다.")
-                        # 분모가 0인 위치 찾기
-                        zero_mask = (denominator == 0)
-                        # 나머지 위치는 정상 계산
-                        working_df[column + '_scaled'] = (working_df[column] - rolling_min) / denominator
-                        # 분모가 0인 위치는 0.5로 설정
-                        working_df.loc[zero_mask.index[zero_mask], column + '_scaled'] = 0.5
-                    else:
-                        working_df[column + '_scaled'] = (working_df[column] - rolling_min) / denominator
-                    
-                    # NaN 값을 0.5로 처리
-                    if working_df[column + '_scaled'].isna().any():
-                        logger.warning(f"{column}_scaled 컬럼에 NaN 값이 있습니다. 기본값 0.5로 대체합니다.")
-                        working_df[column + '_scaled'] = working_df[column + '_scaled'].fillna(0.5)
-                except Exception as e:
-                    logger.error(f"{column} 스케일링 중 오류 발생: {e}")
-                    # 오류 발생 시 기본값 0.5 사용
-                    working_df[scaled_column] = 0.5
+                # outlier 민감도를 낮추기 위해 rolling min/max 대신 5~95% 분위수를
+                # 사용한다. 초기 구간은 expanding 분위수로 보강해 미래값을 참조하지 않는다.
+                rolling_min = working_df[column].rolling(
+                    window=self.params['scaling_window'],
+                    min_periods=ROLLING_QUANTILE_MIN_PERIODS
+                ).quantile(ROLLING_QUANTILE_LOW)
+                rolling_max = working_df[column].rolling(
+                    window=self.params['scaling_window'],
+                    min_periods=ROLLING_QUANTILE_MIN_PERIODS
+                ).quantile(ROLLING_QUANTILE_HIGH)
+                expanding_min = working_df[column].expanding(min_periods=1).quantile(ROLLING_QUANTILE_LOW)
+                expanding_max = working_df[column].expanding(min_periods=1).quantile(ROLLING_QUANTILE_HIGH)
+                rolling_min = rolling_min.fillna(expanding_min)
+                rolling_max = rolling_max.fillna(expanding_max)
 
-            working_df['index'] = working_df[scaled_columns].multiply(index_weight).sum(axis=1)
-            working_df['index'] = working_df['index'].rolling(window=self.params['index_smoothing_window']).mean()
+                denominator = rolling_max - rolling_min
+                zero_mask = denominator == 0
+                if zero_mask.any():
+                    nonzero_seen = (~zero_mask).cummax()
+                    later_zero_count = int((zero_mask & nonzero_seen.shift(fill_value=False)).sum())
+                    if later_zero_count:
+                        raise ValueError(f"{column} 스케일링 분모가 중간 구간에서 0입니다: {later_zero_count}행")
+                    logger.info(f"{column} 스케일링 warm-up 분모 0 구간 {int(zero_mask.sum())}행을 제외합니다.")
+                    denominator = denominator.mask(zero_mask)
+
+                working_df[scaled_column] = ((working_df[column] - rolling_min) / denominator).clip(lower=0, upper=1)
+
+                unexpected_nan_count = int(working_df.loc[~zero_mask, scaled_column].isna().sum())
+                if unexpected_nan_count:
+                    raise ValueError(f"{scaled_column}에 예기치 않은 NaN이 발생했습니다: {unexpected_nan_count}행")
+
+            rows_before_scale_ready = len(working_df)
+            working_df = working_df.dropna(subset=scaled_columns)
+            dropped_scale_rows = rows_before_scale_ready - len(working_df)
+            if dropped_scale_rows:
+                logger.info(f"스케일링 warm-up 미충족으로 {dropped_scale_rows}행을 지수 산출에서 제외했습니다.")
+
+            working_df['index'] = working_df[scaled_columns].multiply(index_weight).sum(axis=1, min_count=len(scaled_columns))
+            if APPLY_INDEX_SMOOTHING:
+                raise RuntimeError("현재 고정 산출 방식은 최종 지수 smoothing을 허용하지 않습니다.")
 
             final_kgf_df = working_df.dropna(subset=['index']).copy()
             if final_kgf_df.empty:
@@ -325,6 +345,10 @@ class DataProcessor:
 
             for col in scaled_columns:
                 new_kgf_index_df[col] = final_kgf_df[col]
+            for col in factor_columns:
+                imputed_col = col + '_imputed'
+                new_kgf_index_df[imputed_col] = final_kgf_df[imputed_col]
+            new_kgf_index_df['imputed_count'] = final_kgf_df['imputed_count']
 
             # 전체 재산출 결과와 DB를 일치시키기 위해 기존 kgf_index를 비운 뒤 다시 저장한다.
             conn = get_db_connection()
@@ -337,6 +361,7 @@ class DataProcessor:
 
             self.f_kgf_df = final_kgf_df
             self.f_json_df = json_df.iloc[-150:]
+            self.validate_calculation_contract(final_kgf_df, factor_columns, scaled_columns)
             
             logger.info("데이터 처리 완료")
             return final_kgf_df, self.f_json_df
@@ -344,6 +369,39 @@ class DataProcessor:
         except Exception as e:
             logger.error(f"데이터 처리 중 오류 발생: {e}")
             raise
+
+    def validate_calculation_contract(self, final_kgf_df, factor_columns, scaled_columns):
+        """고정 산출 계약을 검증하고 위반 시 즉시 실패합니다."""
+        if factor_columns != FIXED_FACTOR_COLUMNS:
+            raise ValueError(f"factor 구성이 고정 계약과 다릅니다: {factor_columns}")
+
+        expected_scaled_columns = [column + '_scaled' for column in FIXED_FACTOR_COLUMNS]
+        if scaled_columns != expected_scaled_columns:
+            raise ValueError(f"scaled 컬럼 구성이 고정 계약과 다릅니다: {scaled_columns}")
+
+        if APPLY_INDEX_SMOOTHING:
+            raise RuntimeError("최종 지수 smoothing은 비활성화되어야 합니다.")
+
+        required_columns = FIXED_FACTOR_COLUMNS + expected_scaled_columns + ['index', '종가', 'imputed_count']
+        missing_columns = [column for column in required_columns if column not in final_kgf_df.columns]
+        if missing_columns:
+            raise KeyError(f"최종 산출 결과 필수 컬럼 누락: {missing_columns}")
+
+        scaled_frame = final_kgf_df[expected_scaled_columns]
+        if scaled_frame.isna().any().any():
+            raise ValueError("scaled factor에 NaN이 남아 있습니다.")
+
+        out_of_range = ((scaled_frame < 0) | (scaled_frame > 1)).any()
+        if out_of_range.any():
+            bad_columns = out_of_range[out_of_range].index.tolist()
+            raise ValueError(f"scaled factor가 0~1 범위를 벗어났습니다: {bad_columns}")
+
+        expected_index = scaled_frame.mean(axis=1) * 100
+        max_diff = (final_kgf_df['index'] - expected_index).abs().max()
+        if max_diff > 1e-9:
+            raise ValueError(f"최종 index가 비평활 동일가중 평균과 다릅니다: max_diff={max_diff}")
+
+        logger.info(f"KGF 산출 계약 검증 완료: {KGF_CALCULATION_VERSION}")
             
     def update_params(self, new_params):
         """지수 계산 파라미터를 업데이트합니다."""
@@ -460,7 +518,15 @@ class DataProcessor:
                 'vix_ema_spread_scaled': latest_record['vix_ema_spread_scaled'],
                 'safe_spread_scaled': latest_record['safe_spread_scaled'],
                 'junk_spread_scaled': latest_record['junk_spread_scaled'],
-                'stock_strength_scaled': latest_record['stock_strength_scaled']
+                'stock_strength_scaled': latest_record['stock_strength_scaled'],
+                'ema_spread_imputed': int(latest_record.get('ema_spread_imputed', 0)),
+                'mcclenllan_imputed': int(latest_record.get('mcclenllan_imputed', 0)),
+                'p_c_ema_imputed': int(latest_record.get('p_c_ema_imputed', 0)),
+                'vix_ema_spread_imputed': int(latest_record.get('vix_ema_spread_imputed', 0)),
+                'safe_spread_imputed': int(latest_record.get('safe_spread_imputed', 0)),
+                'junk_spread_imputed': int(latest_record.get('junk_spread_imputed', 0)),
+                'stock_strength_imputed': int(latest_record.get('stock_strength_imputed', 0)),
+                'imputed_count': int(latest_record.get('imputed_count', 0))
             }
             
             with open("./json/factor_status.json", 'w') as f:
@@ -583,10 +649,10 @@ class DataProcessor:
             return data_frames
         except Exception as e:
             logger.error(f"파생 컬럼 계산 중 오류 발생: {e}")
-            return data_frames
+            raise
 
     def check_and_update_table_structure(self):
-        """kgf_index 테이블 구조를 확인하고 필요한 경우 stock_strength_scaled 열을 추가합니다."""
+        """kgf_index 테이블 구조를 확인하고 필요한 산출/품질 열을 추가합니다."""
         try:
             conn = get_db_connection()
             cursor = conn.cursor()
@@ -598,17 +664,30 @@ class DataProcessor:
                 conn.close()
                 return  # 테이블이 없으면 초기화 함수에서 생성될 것임
             
-            # 테이블 구조 확인 (stock_strength_scaled 열이 있는지 확인)
+            # 테이블 구조 확인
             cursor.execute("PRAGMA table_info(kgf_index)")
             columns = [row[1] for row in cursor.fetchall()]
-            
-            # stock_strength_scaled 열이 없으면 추가
-            if 'stock_strength_scaled' not in columns:
-                logger.info("kgf_index 테이블에 stock_strength_scaled 열 추가 중...")
+
+            required_columns = {
+                'stock_strength_scaled': 'REAL',
+                'ema_spread_imputed': 'INTEGER',
+                'mcclenllan_imputed': 'INTEGER',
+                'p_c_ema_imputed': 'INTEGER',
+                'vix_ema_spread_imputed': 'INTEGER',
+                'safe_spread_imputed': 'INTEGER',
+                'junk_spread_imputed': 'INTEGER',
+                'stock_strength_imputed': 'INTEGER',
+                'imputed_count': 'INTEGER',
+            }
+
+            for column, column_type in required_columns.items():
+                if column in columns:
+                    continue
+                logger.info(f"kgf_index 테이블에 {column} 열 추가 중...")
                 try:
-                    cursor.execute("ALTER TABLE kgf_index ADD COLUMN stock_strength_scaled REAL")
+                    cursor.execute(f"ALTER TABLE kgf_index ADD COLUMN {column} {column_type}")
                     conn.commit()
-                    logger.info("stock_strength_scaled 열 추가 완료")
+                    logger.info(f"{column} 열 추가 완료")
                 except sqlite3.OperationalError as e:
                     # 이미 열이 있는 경우 등의 오류 처리
                     logger.warning(f"열 추가 중 오류 발생: {e}")

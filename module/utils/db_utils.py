@@ -175,6 +175,14 @@ def initialize_db():
             safe_spread_scaled REAL,
             junk_spread_scaled REAL,
             stock_strength_scaled REAL,
+            ema_spread_imputed INTEGER,
+            mcclenllan_imputed INTEGER,
+            p_c_ema_imputed INTEGER,
+            vix_ema_spread_imputed INTEGER,
+            safe_spread_imputed INTEGER,
+            junk_spread_imputed INTEGER,
+            stock_strength_imputed INTEGER,
+            imputed_count INTEGER,
             index_value REAL,
             kospi_close REAL
         )

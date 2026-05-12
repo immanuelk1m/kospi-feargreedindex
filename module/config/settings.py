@@ -46,7 +46,7 @@ INDEX_PARAMS = {
     # 지수 가중치 fallback 값. 기본 산출은 factor 수에 따라 100 / factor_count를 사용합니다.
     'index_weight': 14.28,
     
-    # 지수 평활화 윈도우
+    # 지수 평활화 윈도우 (현재 산출에서는 후행 왜곡을 피하기 위해 사용하지 않음)
     'index_smoothing_window': 3
 }
 
