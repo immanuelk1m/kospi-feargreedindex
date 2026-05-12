@@ -1,0 +1,12 @@
+pandas
+numpy
+requests
+urllib3<2
+beautifulsoup4
+pykrx
+PyGithub
+scipy
+scikit-learn
+matplotlib
+seaborn
+curl_cffi
