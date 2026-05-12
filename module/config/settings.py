@@ -43,7 +43,7 @@ INDEX_PARAMS = {
     # 스케일링 윈도우
     'scaling_window': 240,
     
-    # 지수 가중치 (각 지표별로 14.28% 비중, 7개 지표)
+    # 지수 가중치 fallback 값. 기본 산출은 factor 수에 따라 100 / factor_count를 사용합니다.
     'index_weight': 14.28,
     
     # 지수 평활화 윈도우

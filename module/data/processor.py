@@ -1,10 +1,9 @@
 import pandas as pd
 import json
 import logging
-from datetime import datetime, timedelta
 from config.settings import Y_LIST, INDEX_PARAMS
 from utils.helpers import pre_val
-from utils.db_utils import get_table_as_df, upsert_df_to_db, get_db_connection, get_last_date
+from utils.db_utils import get_table_as_df, upsert_df_to_db, get_db_connection
 import sqlite3
 import os
 import sys
@@ -199,26 +198,39 @@ class DataProcessor:
             else:
                 logger.warning("주가 강도 데이터가 없어 인덱스 계산에서 제외됩니다.")
                 stock_strength_series = None
-            
-            # 기존 지표들 결합
-            kgf_component_dfs = [
-                data_frames['kospi_df']['ema_spread'],
-                data_frames['breadth_df']['mcclenllan'],
-                data_frames['pcr_df']['p_c_ema'].mul(-1),
-                data_frames['vix_df']['vix_ema_spread'].mul(-1),
-                safe_demand_df['safe_spread'],
-                data_frames['junkBond_df']['junk_spread'].mul(-1),
-                data_frames['kospi_df']['종가']
+
+            # 최종 지수 산출에 쓰는 factor를 명시적으로 고정한다.
+            # 종가(kospi close)는 시각화/저장용 기준값이며 점수 산출 factor가 아니다.
+            factor_columns = [
+                'ema_spread',
+                'mcclenllan',
+                'p_c_ema',
+                'vix_ema_spread',
+                'safe_spread',
+                'junk_spread'
             ]
-            
-            # 주가 강도 추가 (있는 경우)
-            adjusted_strength = None  # 변수 미리 정의
+            kgf_component_dfs = [
+                data_frames['kospi_df']['ema_spread'].rename('ema_spread'),
+                data_frames['breadth_df']['mcclenllan'].rename('mcclenllan'),
+                data_frames['pcr_df']['p_c_ema'].mul(-1).rename('p_c_ema'),
+                data_frames['vix_df']['vix_ema_spread'].mul(-1).rename('vix_ema_spread'),
+                safe_demand_df['safe_spread'].rename('safe_spread'),
+                data_frames['junkBond_df']['junk_spread'].mul(-1).rename('junk_spread'),
+                data_frames['kospi_df']['종가'].rename('종가')
+            ]
+
             if stock_strength_series is not None:
                 # 0-100 스케일에서 50이 중간값이므로, 50 미만은 공포, 50 초과는 탐욕
-                adjusted_strength = (stock_strength_series - 50) / 50
+                adjusted_strength = ((stock_strength_series - 50) / 50).rename('stock_strength')
                 kgf_component_dfs.append(adjusted_strength)
-            
+                factor_columns.append('stock_strength')
+
             kgf_df = pd.concat(kgf_component_dfs, axis=1, join='inner')
+            rows_before_dropna = len(kgf_df)
+            kgf_df = kgf_df.dropna(subset=factor_columns + ['종가'])
+            dropped_rows = rows_before_dropna - len(kgf_df)
+            if dropped_rows:
+                logger.info(f"필수 factor 결측으로 {dropped_rows}행을 지수 산출에서 제외했습니다.")
             
             # JSON 시각화용 데이터프레임 구성
             json_component_dfs = [
@@ -239,79 +251,26 @@ class DataProcessor:
             json_df = pd.concat(json_component_dfs, axis=1, join='inner')
             json_df.rename(columns={'종가': 'kospi'}, inplace=True)
             
-            # 마지막 계산 날짜 이후의 새 데이터만 처리
-            if last_calculated_date is not None:
-                new_data_dates = kgf_df.index[kgf_df.index > last_calculated_date]
-                if len(new_data_dates) == 0:
-                    logger.info("새로 계산할 데이터가 없습니다.")
-                    # 기존 데이터를 그대로 사용
-                    self.f_kgf_df = pd.concat([
-                        existing_kgf_index[['index_value', 'kospi_close']].rename(columns={'index_value': 'index', 'kospi_close': '종가'}),
-                        existing_kgf_index.filter(like='_scaled')
-                    ], axis=1)
-                    
-                    # 최근 150일치 데이터만 사용
-                    self.f_json_df = json_df.iloc[-150:]
-                    logger.info("기존 인덱스를 사용합니다.")
-                    
-                    # 하지만 마지막 데이터가 최근 2일 이내가 아니면 새로운 데이터가 있는지 확인
-                    last_date = pd.to_datetime(existing_kgf_index.index.max())
-                    current_date = pd.to_datetime(datetime.today())
-                    days_diff = (current_date - last_date).days
-                    
-                    if days_diff > 2:
-                        logger.warning(f"마지막 데이터와 현재 날짜 사이에 {days_diff}일의 차이가 있습니다. 각 Factor를 확인하세요.")
-                        
-                        # 각 Factor의 마지막 날짜 체크
-                        factors = {
-                            'KOSPI': data_frames['kospi_df'].index.max() if not data_frames['kospi_df'].empty else None,
-                            'VIX': data_frames['vix_df'].index.max() if not data_frames['vix_df'].empty else None,
-                            'PCR': data_frames['pcr_df'].index.max() if not data_frames['pcr_df'].empty else None,
-                            'Breadth': data_frames['breadth_df'].index.max() if not data_frames['breadth_df'].empty else None,
-                            'JunkBond': data_frames['junkBond_df'].index.max() if not data_frames['junkBond_df'].empty else None,
-                            'TenBond': data_frames['tenBond_df'].index.max() if not data_frames['tenBond_df'].empty else None
-                        }
-                        
-                        logger.info(f"각 Factor 마지막 날짜: {factors}")
-                        
-                    return self.f_kgf_df, self.f_json_df
-                
-                logger.info(f"새로운 데이터: {len(new_data_dates)}일치")
-                
-                # 스케일링을 위해 필요한 과거 데이터 포함 (scaling_window 기간)
-                window_start_date = new_data_dates.min() - timedelta(days=self.params['scaling_window'] * 1.5)  # 여유있게 1.5배
-                working_df = kgf_df[kgf_df.index >= window_start_date].copy()
-                
-                # working_df가 정의된 후에 stock_strength 추가
-                if adjusted_strength is not None:
-                    working_df['stock_strength'] = adjusted_strength
-                
-                # 이미 계산된 지수 값
-                calculated_kgf_df = pd.concat([
-                    existing_kgf_index[['index_value', 'kospi_close']].rename(columns={'index_value': 'index', 'kospi_close': '종가'}),
-                    existing_kgf_index.filter(like='_scaled')
-                ], axis=1)
-            else:
-                # 첫 실행 또는 데이터 없음
-                working_df = kgf_df.copy()
-                working_df['index'] = None
-                
-                # working_df가 정의된 후에 stock_strength 추가
-                if adjusted_strength is not None:
-                    working_df['stock_strength'] = adjusted_strength
-                
-                calculated_kgf_df = None
-                new_data_dates = working_df.index
-            
-            # 새 데이터에 대해서만 스케일링 및 인덱스 계산
-            logger.info("새 데이터 스케일링 및 인덱스 계산 중")
+            # 증분 계산은 rolling min/max와 기존값 보존 때문에 실행 시점에 따라 값이 달라진다.
+            # 재현성을 위해 매 실행마다 전체 교집합 구간을 동일 산식으로 재계산한다.
+            working_df = kgf_df.copy()
             working_df['index'] = None
-            
-            for column in working_df.columns:
-                if column == '종가' or column == 'index':
-                    continue
-                    
-                working_df[column + '_scaled'] = None
+            logger.info(f"전체 KGF 인덱스 재계산 중: {len(working_df)}행, factor={factor_columns}")
+
+            missing_factor_columns = [column for column in factor_columns if column not in working_df.columns]
+            if missing_factor_columns:
+                raise KeyError(f"KGF factor 컬럼이 누락되었습니다: {missing_factor_columns}")
+
+            scaled_columns = []
+            index_weight = 100 / len(factor_columns)
+            logger.info(f"factor {len(factor_columns)}개를 동일 가중치({index_weight:.6f})로 산출합니다.")
+
+            working_df['index'] = None
+
+            for column in factor_columns:
+                scaled_column = column + '_scaled'
+                scaled_columns.append(scaled_column)
+                working_df[scaled_column] = None
                 rolling_min = working_df[column].rolling(window=self.params['scaling_window'], min_periods=20).min()
                 # NaN이면 전체 데이터의 최소값으로 대체
                 if rolling_min.isna().any():
@@ -345,57 +304,31 @@ class DataProcessor:
                 except Exception as e:
                     logger.error(f"{column} 스케일링 중 오류 발생: {e}")
                     # 오류 발생 시 기본값 0.5 사용
-                    working_df[column + '_scaled'] = 0.5
-            
-            working_df['index'] = working_df.filter(like='_scaled').multiply(self.params['index_weight']).sum(axis=1)
+                    working_df[scaled_column] = 0.5
+
+            working_df['index'] = working_df[scaled_columns].multiply(index_weight).sum(axis=1)
             working_df['index'] = working_df['index'].rolling(window=self.params['index_smoothing_window']).mean()
-            
-            # 새로 계산된 지수에서 필요한 부분만 추출
-            new_kgf_df = working_df.loc[new_data_dates].dropna(subset=['index'])
-            
-            if calculated_kgf_df is not None:
-                # 이전 계산 결과와 새 계산 결과 병합
-                final_kgf_df = pd.concat([calculated_kgf_df, new_kgf_df])
-                # 중복 제거 (이전 데이터 우선)
-                final_kgf_df = final_kgf_df[~final_kgf_df.index.duplicated(keep='first')]
-            else:
-                # 첫 실행시 충분한 데이터가 쌓일 때까지 기다림
-                final_kgf_df = new_kgf_df.iloc[363:]
-            
-            # 새 계산 결과만 DB에 저장
-            if not new_kgf_df.empty:
-                columns_to_save = [
-                    'ema_spread_scaled',
-                    'mcclenllan_scaled',
-                    'p_c_ema_scaled',
-                    'vix_ema_spread_scaled',
-                    'safe_spread_scaled',
-                    'junk_spread_scaled',
-                    'index_value',
-                    'kospi_close'
-                ]
-                
-                # 주가 강도 열이 있으면 추가
-                if 'stock_strength_scaled' in new_kgf_df.columns:
-                    columns_to_save.append('stock_strength_scaled')
-                
-                
-                # 새로운 데이터프레임 생성 방식으로 변경
-                new_kgf_index_df = pd.DataFrame()
-                
-                # index -> index_value, 종가 -> kospi_close로 컬럼 매핑
-                new_kgf_index_df['index_value'] = new_kgf_df['index']
-                new_kgf_index_df['kospi_close'] = new_kgf_df['종가']
-                
-                # 나머지 _scaled 컬럼들 추가
-                for col in columns_to_save:
-                    if col != 'index_value' and col != 'kospi_close' and col in new_kgf_df.columns:
-                        new_kgf_index_df[col] = new_kgf_df[col]
-                
-                print(new_kgf_index_df)
-                upsert_df_to_db(new_kgf_index_df, 'kgf_index')
-                logger.info(f"새로운 KGF 인덱스 {len(new_kgf_index_df)}행을 DB에 저장 완료")
-            
+
+            final_kgf_df = working_df.dropna(subset=['index']).copy()
+            if final_kgf_df.empty:
+                raise ValueError("KGF 인덱스 재계산 결과가 비어 있습니다.")
+
+            new_kgf_index_df = pd.DataFrame(index=final_kgf_df.index)
+            new_kgf_index_df['index_value'] = final_kgf_df['index']
+            new_kgf_index_df['kospi_close'] = final_kgf_df['종가']
+
+            for col in scaled_columns:
+                new_kgf_index_df[col] = final_kgf_df[col]
+
+            # 전체 재산출 결과와 DB를 일치시키기 위해 기존 kgf_index를 비운 뒤 다시 저장한다.
+            conn = get_db_connection()
+            cursor = conn.cursor()
+            cursor.execute("DELETE FROM kgf_index")
+            conn.commit()
+            conn.close()
+            upsert_df_to_db(new_kgf_index_df, 'kgf_index')
+            logger.info(f"KGF 인덱스 전체 재산출 {len(new_kgf_index_df)}행을 DB에 저장 완료")
+
             self.f_kgf_df = final_kgf_df
             self.f_json_df = json_df.iloc[-150:]
             
@@ -585,7 +518,7 @@ class DataProcessor:
                     data_frames['vix_df']['vix_ema'] = data_frames['vix_df']['vix_close'].rolling(window=self.params['vix_ema_window'], min_periods=1).mean()
                     data_frames['vix_df']['vix_ema_spread'] = data_frames['vix_df']['vix_close'] - data_frames['vix_df']['vix_ema']
                     # NaN 처리
-                    data_frames['vix_df']['vix_ema'] = data_frames['vix_df']['vix_ema'].fillna(method='ffill')
+                    data_frames['vix_df']['vix_ema'] = data_frames['vix_df']['vix_ema'].ffill()
                     data_frames['vix_df']['vix_ema_spread'] = data_frames['vix_df']['vix_ema_spread'].fillna(0)
             
             # KOSPI 테이블
@@ -596,9 +529,9 @@ class DataProcessor:
                     data_frames['kospi_df']['bf_20'] = data_frames['kospi_df']['종가'].shift(self.params['kospi_return_shift'])
                     data_frames['kospi_df']['return_20'] = (data_frames['kospi_df']['종가'] / data_frames['kospi_df']['bf_20'] - 1) * 100
                     # NaN 처리
-                    data_frames['kospi_df']['ema'] = data_frames['kospi_df']['ema'].fillna(method='ffill')
+                    data_frames['kospi_df']['ema'] = data_frames['kospi_df']['ema'].ffill()
                     data_frames['kospi_df']['ema_spread'] = data_frames['kospi_df']['ema_spread'].fillna(0)
-                    data_frames['kospi_df']['return_20'] = data_frames['kospi_df']['return_20'].fillna(method='ffill')
+                    data_frames['kospi_df']['return_20'] = data_frames['kospi_df']['return_20'].ffill()
             
             # PCR 테이블
             if 'pcr_df' in data_frames and data_frames['pcr_df'] is not None and not data_frames['pcr_df'].empty:
@@ -612,7 +545,7 @@ class DataProcessor:
                 if pcr_column:
                     data_frames['pcr_df']['p_c_ema'] = data_frames['pcr_df'][pcr_column].rolling(window=self.params['pcr_ema_window'], min_periods=1).mean()
                     # NaN 처리
-                    data_frames['pcr_df']['p_c_ema'] = data_frames['pcr_df']['p_c_ema'].fillna(method='ffill')
+                    data_frames['pcr_df']['p_c_ema'] = data_frames['pcr_df']['p_c_ema'].ffill()
             
             # Breadth 테이블
             if 'breadth_df' in data_frames and data_frames['breadth_df'] is not None and not data_frames['breadth_df'].empty:
@@ -631,14 +564,14 @@ class DataProcessor:
                         data_frames['junkBond_df']['bbbp'].mul(self.params['junk_bond_bbbp_weight'])
                     )
                     # NaN 처리
-                    data_frames['junkBond_df']['junk_spread'] = data_frames['junkBond_df']['junk_spread'].fillna(method='ffill')
+                    data_frames['junkBond_df']['junk_spread'] = data_frames['junkBond_df']['junk_spread'].ffill()
             
             # Ten Bond 테이블
             if 'tenBond_df' in data_frames and data_frames['tenBond_df'] is not None and not data_frames['tenBond_df'].empty:
                 if 'ten_ratio' in data_frames['tenBond_df'].columns:
                     data_frames['tenBond_df']['bond_ema'] = data_frames['tenBond_df']['ten_ratio'].rolling(window=self.params['bond_ema_window'], min_periods=1).mean()
                     # NaN 처리
-                    data_frames['tenBond_df']['bond_ema'] = data_frames['tenBond_df']['bond_ema'].fillna(method='ffill')
+                    data_frames['tenBond_df']['bond_ema'] = data_frames['tenBond_df']['bond_ema'].ffill()
             
             logger.info("파생 컬럼 계산 완료")
             return data_frames
