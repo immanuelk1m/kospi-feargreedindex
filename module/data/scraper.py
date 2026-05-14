@@ -22,6 +22,8 @@ TE_10Y_MARKET_URL = "https://d3ii0wo49og5mi.cloudfront.net/markets/gvsk10yr:gov"
 TE_CHART_DECODE_KEY = b"tradingeconomics-charts-core-api-key"
 NAVER_INDEX_CHART_URL = "https://fchart.stock.naver.com/sise.nhn"
 KOSPI_NAVER_SYMBOL = "KOSPI"
+KOSPI_KRX_TICKER = "1001"
+KOSPI_OHLCV_COLUMNS = ["시가", "고가", "저가", "종가", "거래량"]
 
 class DataScraper:
     def __init__(self):
@@ -67,6 +69,9 @@ class DataScraper:
                 start_date = yesterday
                 logger.info(f"시작 날짜가 오늘과 같습니다. 어제부터 데이터를 가져옵니다: {start_date}")
 
+            # External index sources can fail independently. Naver is the primary
+            # source for scheduled refreshes; pykrx/KRX is a compatibility source
+            # only when Naver yields no rows, and both-empty still fails fast below.
             new_kospi_df = self._fetch_naver_kospi_data(start_date, today)
             if new_kospi_df.empty:
                 logger.warning("Naver KOSPI 수집 결과가 비어 있어 pykrx KRX 경로를 시도합니다.")
@@ -136,26 +141,40 @@ class DataScraper:
 
             if not rows:
                 logger.warning(f"Naver KOSPI 데이터 없음: {start_date} ~ {end_date}")
-                return pd.DataFrame(columns=["시가", "고가", "저가", "종가", "거래량"])
+                return self._empty_kospi_ohlcv_df()
 
-            df = pd.DataFrame(rows).drop_duplicates(subset=["date"], keep="last")
-            df = df.sort_values("date").set_index("date")
-            df.index.name = "date"
+            df = self._normalize_kospi_ohlcv_df(pd.DataFrame(rows))
             logger.info(f"Naver KOSPI 수집 성공: {start_date} ~ {end_date} ({len(df)}행)")
             return df
         except Exception as e:
             logger.error(f"Naver KOSPI 수집 실패: {start_date} ~ {end_date} - {e}")
-            return pd.DataFrame(columns=["시가", "고가", "저가", "종가", "거래량"])
+            return self._empty_kospi_ohlcv_df()
 
     def _fetch_pykrx_kospi_data(self, start_date, end_date):
         """pykrx KRX 경로로 KOSPI 데이터를 수집합니다."""
         try:
-            df = stock.get_index_ohlcv_by_date(start_date, end_date, '1001')
+            df = stock.get_index_ohlcv_by_date(start_date, end_date, KOSPI_KRX_TICKER)
             df.index.name = 'date'
             return df
         except Exception as e:
             logger.error(f"pykrx KOSPI 수집 실패: {start_date} ~ {end_date} - {e}")
-            return pd.DataFrame()
+            return self._empty_kospi_ohlcv_df()
+
+    def _empty_kospi_ohlcv_df(self):
+        """KOSPI 수집 실패를 나타내는 빈 OHLCV DataFrame을 반환합니다."""
+        df = pd.DataFrame(columns=KOSPI_OHLCV_COLUMNS)
+        df.index.name = "date"
+        return df
+
+    def _normalize_kospi_ohlcv_df(self, df):
+        """KOSPI OHLCV DataFrame의 날짜 중복과 정렬을 표준화합니다."""
+        if df.empty:
+            return self._empty_kospi_ohlcv_df()
+
+        normalized = df.drop_duplicates(subset=["date"], keep="last")
+        normalized = normalized.sort_values("date").set_index("date")
+        normalized.index.name = "date"
+        return normalized[KOSPI_OHLCV_COLUMNS]
 
     def fetch_kospi_200_volatility_index(self):
         """KOSPI 200 변동성 지수 데이터를 가져옵니다."""
