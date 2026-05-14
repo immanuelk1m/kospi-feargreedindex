@@ -14,6 +14,7 @@ import xml.etree.ElementTree as ET
 from config.settings import KRX_URL, NICE_RATING_URL, INVESTING_URL, HEADERS, DB_DIR
 from utils.helpers import date_range_f
 from utils.db_utils import get_db_connection, get_table_as_df, get_last_date, upsert_df_to_db
+from utils.krx_auth import install_pykrx_auth_proxy, krx_post_json
 
 # 로거 가져오기
 logger = logging.getLogger(__name__)
@@ -27,6 +28,7 @@ KOSPI_OHLCV_COLUMNS = ["시가", "고가", "저가", "종가", "거래량"]
 
 class DataScraper:
     def __init__(self):
+        install_pykrx_auth_proxy()
         self.vix_df = None
         self.tenBond_df = None
         self.junkBond_df = None
@@ -201,9 +203,7 @@ class DataScraper:
                 "endDd": end_date
             }
 
-            response = requests.post(KRX_URL, headers=HEADERS, data=data, timeout=30)
-            response.raise_for_status()
-            result = response.json()
+            result = krx_post_json(KRX_URL, headers=HEADERS, data=data, timeout=30)
             logger.info("KOSPI 200 변동성 지수 데이터 요청 성공")
             return result
         except Exception as e:
@@ -501,9 +501,7 @@ class DataScraper:
             }
 
             try:
-                response = requests.post(KRX_URL, headers=HEADERS, data=data, timeout=30)
-                response.raise_for_status()
-                result = response.json()
+                result = krx_post_json(KRX_URL, headers=HEADERS, data=data, timeout=30)
             except Exception as e:
                 logger.error(f"PCR 데이터 요청 중 오류 발생: {e}")
                 self.pcr_df = get_table_as_df('pcr')

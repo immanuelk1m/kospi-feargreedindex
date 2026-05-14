@@ -51,13 +51,16 @@ INDEX_PARAMS = {
 }
 
 # API 관련 설정
-KRX_URL = "http://data.krx.co.kr/comm/bldAttendant/getJsonData.cmd"
+KRX_URL = "https://data.krx.co.kr/comm/bldAttendant/getJsonData.cmd"
 NICE_RATING_URL = "https://www.nicerating.com/disclosure/spreadRates.do"
 INVESTING_URL = "https://kr.investing.com/rates-bonds/south-korea-10-year-bond-yield-historical-data"
 
 # 헤더 설정
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-    "Referer": "http://data.krx.co.kr/contents/MDC/MDI/mdiLoader/index.cmd",
-    "Content-Type": "application/x-www-form-urlencoded"
+    "Referer": "https://data.krx.co.kr/contents/MDC/MDI/outerLoader/index.cmd",
+    "Origin": "https://data.krx.co.kr",
+    "Accept": "application/json, text/javascript, */*; q=0.01",
+    "X-Requested-With": "XMLHttpRequest",
+    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
 } 
