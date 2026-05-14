@@ -10,6 +10,7 @@ import logging
 import base64
 import json
 import zlib
+import xml.etree.ElementTree as ET
 from config.settings import KRX_URL, NICE_RATING_URL, INVESTING_URL, HEADERS, DB_DIR
 from utils.helpers import date_range_f
 from utils.db_utils import get_db_connection, get_table_as_df, get_last_date, upsert_df_to_db
@@ -19,6 +20,8 @@ logger = logging.getLogger(__name__)
 
 TE_10Y_MARKET_URL = "https://d3ii0wo49og5mi.cloudfront.net/markets/gvsk10yr:gov"
 TE_CHART_DECODE_KEY = b"tradingeconomics-charts-core-api-key"
+NAVER_INDEX_CHART_URL = "https://fchart.stock.naver.com/sise.nhn"
+KOSPI_NAVER_SYMBOL = "KOSPI"
 
 class DataScraper:
     def __init__(self):
@@ -63,9 +66,14 @@ class DataScraper:
                 yesterday = (datetime.today() - timedelta(days=1)).strftime('%Y-%m-%d')
                 start_date = yesterday
                 logger.info(f"시작 날짜가 오늘과 같습니다. 어제부터 데이터를 가져옵니다: {start_date}")
-            
-            new_kospi_df = stock.get_index_ohlcv_by_date(start_date, today, '1001')
-            new_kospi_df.index.name = 'date'
+
+            new_kospi_df = self._fetch_naver_kospi_data(start_date, today)
+            if new_kospi_df.empty:
+                logger.warning("Naver KOSPI 수집 결과가 비어 있어 pykrx KRX 경로를 시도합니다.")
+                new_kospi_df = self._fetch_pykrx_kospi_data(start_date, today)
+
+            if new_kospi_df.empty:
+                raise ValueError(f"KOSPI 데이터를 수집하지 못했습니다: {start_date} ~ {today}")
             
             # 중복되지 않은 새 데이터만 DB에 저장
             if not new_kospi_df.empty:
@@ -73,7 +81,7 @@ class DataScraper:
                 
                 # 날짜 형식을 '2025-03-17 00:00:00' 형식으로 변환
                 new_kospi_df = new_kospi_df.reset_index()
-                new_kospi_df['date'] = new_kospi_df['date'].dt.strftime('%Y-%m-%d 00:00:00')
+                new_kospi_df['date'] = pd.to_datetime(new_kospi_df['date']).dt.strftime('%Y-%m-%d 00:00:00')
                 new_kospi_df = new_kospi_df.set_index('date')
                 
                 upsert_df_to_db(new_kospi_df, 'kospi')
@@ -84,6 +92,70 @@ class DataScraper:
         except Exception as e:
             logger.error(f"KOSPI 데이터 수집 중 오류 발생: {e}")
             raise
+
+    def _fetch_naver_kospi_data(self, start_date, end_date):
+        """Naver 차트 API에서 KOSPI OHLCV 데이터를 수집합니다."""
+        start_dt = pd.to_datetime(start_date).normalize()
+        end_dt = pd.to_datetime(end_date).normalize()
+        request_days = max((end_dt - start_dt).days + 10, 60)
+        params = {
+            "symbol": KOSPI_NAVER_SYMBOL,
+            "timeframe": "day",
+            "count": min(request_days, 5000),
+            "requestType": 0,
+        }
+        headers = {
+            "User-Agent": HEADERS.get("User-Agent", "Mozilla/5.0"),
+            "Referer": "https://finance.naver.com/",
+            "Accept": "text/xml,*/*",
+        }
+
+        try:
+            response = requests.get(NAVER_INDEX_CHART_URL, params=params, headers=headers, timeout=30)
+            response.raise_for_status()
+            xml_text = response.content.decode("euc-kr", errors="replace")
+            xml_text = xml_text.replace('encoding="EUC-KR"', 'encoding="UTF-8"')
+            root = ET.fromstring(xml_text.encode("utf-8"))
+            rows = []
+            for item in root.findall(".//item"):
+                raw = item.attrib.get("data", "")
+                parts = raw.split("|")
+                if len(parts) < 6:
+                    continue
+                date = pd.to_datetime(parts[0], format="%Y%m%d", errors="coerce")
+                if pd.isna(date) or date < start_dt or date > end_dt:
+                    continue
+                rows.append({
+                    "date": date.strftime("%Y-%m-%d 00:00:00"),
+                    "시가": float(parts[1]),
+                    "고가": float(parts[2]),
+                    "저가": float(parts[3]),
+                    "종가": float(parts[4]),
+                    "거래량": int(float(parts[5])),
+                })
+
+            if not rows:
+                logger.warning(f"Naver KOSPI 데이터 없음: {start_date} ~ {end_date}")
+                return pd.DataFrame(columns=["시가", "고가", "저가", "종가", "거래량"])
+
+            df = pd.DataFrame(rows).drop_duplicates(subset=["date"], keep="last")
+            df = df.sort_values("date").set_index("date")
+            df.index.name = "date"
+            logger.info(f"Naver KOSPI 수집 성공: {start_date} ~ {end_date} ({len(df)}행)")
+            return df
+        except Exception as e:
+            logger.error(f"Naver KOSPI 수집 실패: {start_date} ~ {end_date} - {e}")
+            return pd.DataFrame(columns=["시가", "고가", "저가", "종가", "거래량"])
+
+    def _fetch_pykrx_kospi_data(self, start_date, end_date):
+        """pykrx KRX 경로로 KOSPI 데이터를 수집합니다."""
+        try:
+            df = stock.get_index_ohlcv_by_date(start_date, end_date, '1001')
+            df.index.name = 'date'
+            return df
+        except Exception as e:
+            logger.error(f"pykrx KOSPI 수집 실패: {start_date} ~ {end_date} - {e}")
+            return pd.DataFrame()
 
     def fetch_kospi_200_volatility_index(self):
         """KOSPI 200 변동성 지수 데이터를 가져옵니다."""
@@ -110,11 +182,12 @@ class DataScraper:
                 "endDd": end_date
             }
 
-            response = requests.post(KRX_URL, headers=HEADERS, data=data)
+            response = requests.post(KRX_URL, headers=HEADERS, data=data, timeout=30)
             response.raise_for_status()
+            result = response.json()
             logger.info("KOSPI 200 변동성 지수 데이터 요청 성공")
-            return response.json()
-        except requests.exceptions.RequestException as e:
+            return result
+        except Exception as e:
             logger.error(f"KOSPI 200 변동성 지수 데이터 요청 중 오류 발생: {e}")
             return None
 
@@ -408,9 +481,14 @@ class DataScraper:
                 "csvxls_isNo": "false"
             }
 
-            response = requests.post(KRX_URL, headers=HEADERS, data=data)
-            response.raise_for_status()
-            result = response.json()
+            try:
+                response = requests.post(KRX_URL, headers=HEADERS, data=data, timeout=30)
+                response.raise_for_status()
+                result = response.json()
+            except Exception as e:
+                logger.error(f"PCR 데이터 요청 중 오류 발생: {e}")
+                self.pcr_df = get_table_as_df('pcr')
+                return
 
             new_pcr_df = pd.DataFrame(result['output'])
             new_pcr_df.columns = ['date', 'put', 'cal', 'p_c_ratio']
@@ -662,8 +740,8 @@ class DataScraper:
                 
             # 숫자로 변환
             try:
-                aam_list = list(np.float_(aam_list))
-                bbbp_list = list(np.float_(bbbp_list))
+                aam_list = pd.to_numeric(pd.Series(aam_list), errors='coerce').astype(float).tolist()
+                bbbp_list = pd.to_numeric(pd.Series(bbbp_list), errors='coerce').astype(float).tolist()
 
                 new_junkBond_df = pd.DataFrame((zip(date_list, aam_list, bbbp_list)),
                                         columns=['date', 'aam', 'bbbp'])
