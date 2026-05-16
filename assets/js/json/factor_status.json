@@ -3,7 +3,7 @@
     "mcclenllan_scaled": 1.0,
     "p_c_ema_scaled": 0.43419110313185716,
     "vix_ema_spread_scaled": 0.10310216700094633,
-    "safe_spread_scaled": 0.9538754793123536,
+    "safe_spread_scaled": 0.9540101103055854,
     "junk_spread_scaled": 0.7721682847896439,
     "stock_strength_scaled": 0.0,
     "ema_spread_imputed": 0,
