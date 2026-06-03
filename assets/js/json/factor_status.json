@@ -4,14 +4,14 @@
     "p_c_ema_scaled": 0.0,
     "vix_ema_spread_scaled": 0.24607087901666985,
     "safe_spread_scaled": 1.0,
-    "junk_spread_scaled": 0.75663430420712,
+    "junk_spread_scaled": 0.7255663430420715,
     "stock_strength_scaled": 0.0,
     "ema_spread_imputed": 0,
     "mcclenllan_imputed": 0,
     "p_c_ema_imputed": 0,
     "vix_ema_spread_imputed": 0,
     "safe_spread_imputed": 0,
-    "junk_spread_imputed": 1,
+    "junk_spread_imputed": 0,
     "stock_strength_imputed": 0,
-    "imputed_count": 1
+    "imputed_count": 0
 }
