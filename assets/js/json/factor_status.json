@@ -1,17 +1,17 @@
 {
     "ema_spread_scaled": 0.0,
-    "mcclenllan_scaled": 1.0,
+    "mcclenllan_scaled": 0.9747598499995725,
     "p_c_ema_scaled": 1.0,
     "vix_ema_spread_scaled": 1.0,
-    "safe_spread_scaled": 0.10282651171454302,
-    "junk_spread_scaled": 0.7265556529360213,
-    "stock_strength_scaled": 0.6507913476115748,
+    "safe_spread_scaled": 0.07981495430716358,
+    "junk_spread_scaled": 0.7230499561787903,
+    "stock_strength_scaled": 1.0,
     "ema_spread_imputed": 0,
     "mcclenllan_imputed": 0,
     "p_c_ema_imputed": 0,
     "vix_ema_spread_imputed": 0,
     "safe_spread_imputed": 0,
     "junk_spread_imputed": 0,
-    "stock_strength_imputed": 1,
-    "imputed_count": 1
+    "stock_strength_imputed": 0,
+    "imputed_count": 0
 }
